@@ -1,6 +1,5 @@
 # Getting Started with Create React App
 
-
 El objetivo del proyecto es crear una tienda de mascostas ( Puppy Store ) en la cual el usuario pueda seleccionar diversos elementos relacionados a comprar.
 
 ## Available Scripts
