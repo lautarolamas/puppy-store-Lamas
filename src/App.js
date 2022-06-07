@@ -1,21 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
+        <p>Puppy Store loading . . .</p>
         <a
           className="App-link"
-          href="https://reactjs.org"
+          href="https://portafolio-lamas.netlify.app/"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          Creado por Lautaro Lamas
         </a>
       </header>
     </div>

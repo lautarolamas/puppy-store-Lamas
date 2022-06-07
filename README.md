@@ -1,6 +1,7 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+El objetivo del proyecto es crear una tienda de mascostas ( Puppy Store ) en la cual el usuario pueda seleccionar diversos elementos relacionados a comprar.
 
 ## Available Scripts
 
