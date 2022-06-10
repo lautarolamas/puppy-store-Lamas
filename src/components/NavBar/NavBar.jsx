@@ -13,12 +13,14 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 //import AdbIcon from "@mui/icons-material/Adb";
 import PetsIcon from "@mui/icons-material/Pets";
+import { CartWidget } from "./CartWidget/CartWidget";
 const pages = ["Productos", "Sobre Nosotros"];
 const settings = ["Perfil", "Favoritos", "Cerrar Sesión"];
 
-const ResponsiveAppBar = () => {
+const NavBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const cantidad = 5;
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -125,8 +127,9 @@ const ResponsiveAppBar = () => {
             ))}
           </Box>
 
+          <CartWidget cantidad={cantidad} />
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
+            <Tooltip title="Acciones rapidas">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Remy Sharp" src="./perro.png" />
               </IconButton>
@@ -159,4 +162,4 @@ const ResponsiveAppBar = () => {
     </AppBar>
   );
 };
-export default ResponsiveAppBar;
+export default NavBar;

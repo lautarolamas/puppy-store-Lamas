@@ -1,11 +1,10 @@
 import "./App.css";
-import "./components/NavBar.js";
-import ResponsiveAppBar from "./components/NavBar.js";
+import NavBar from "./components/NavBar/NavBar";
 
 function App() {
   return (
     <div className="App">
-      <ResponsiveAppBar />
+      <NavBar />
       <header className="App-header">
         <p>Puppy Store loading . . .</p>
         <a
