@@ -11,7 +11,6 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-//import AdbIcon from "@mui/icons-material/Adb";
 import PetsIcon from "@mui/icons-material/Pets";
 import { CartWidget } from "./CartWidget/CartWidget";
 const pages = ["Productos", "Sobre Nosotros"];
