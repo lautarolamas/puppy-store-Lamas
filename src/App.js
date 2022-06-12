@@ -2,12 +2,13 @@ import "./App.css";
 import NavBar from "./components/NavBar/NavBar";
 import { ItemListContainer } from "./components/ItemListContainer/ItemListContainer";
 
+const greeting = "$200";
 function App() {
   return (
     <div className="App">
       <NavBar />
       <header className="App-header">
-        <ItemListContainer />
+        <ItemListContainer greeting={greeting} />
         <p>Puppy Store loading . . .</p>
         <a
           className="App-link"
