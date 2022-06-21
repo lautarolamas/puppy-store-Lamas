@@ -12,7 +12,7 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import PetsIcon from "@mui/icons-material/Pets";
-import { CartWidget } from "./CartWidget/CartWidget";
+import { CartWidget } from "../CartWidget/CartWidget";
 const pages = ["Productos", "Sobre Nosotros"];
 const settings = ["Perfil", "Favoritos", "Cerrar Sesión"];
 
