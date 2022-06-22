@@ -25,28 +25,26 @@ const ItemCount = ({ stock, initial, onAdd }) => {
   };
 
   return (
-    <>
-      <div className="main_div">
-        <div className="center_div">
-          <h1>{count}</h1>
-          <div className="btn_div">
-            <Tooltip title="Quitar">
-              <Button onClick={decrementar}>
-                <RemoveIcon />
-              </Button>
-            </Tooltip>
-            <Tooltip title="Agregar al carrrito">
-              <Button onClick={sumar}>
-                <AddIcon />
-              </Button>
-            </Tooltip>
-          </div>
-          <div className="addToCart">
-            <Button onClick={onAdd()}>Agregar al carrito</Button>
-          </div>
+    <div className="main_div">
+      <div className="center_div">
+        <h1>{count}</h1>
+        <div className="btn_div">
+          <Tooltip title="Quitar">
+            <Button onClick={decrementar}>
+              <RemoveIcon />
+            </Button>
+          </Tooltip>
+          <Tooltip title="Agregar al carrrito">
+            <Button onClick={sumar}>
+              <AddIcon />
+            </Button>
+          </Tooltip>
+        </div>
+        <div className="addToCart">
+          <Button onClick={onAdd()}>Agregar al carrito</Button>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 export default ItemCount;
