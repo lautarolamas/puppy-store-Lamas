@@ -79,7 +79,7 @@ const ItemDetail = ({ item }) => {
               >
                 {descripcion}
               </Text>
-              <ItemCount stock={5} initial={1} onAdd={onAdd} />
+              <ItemCount stock={10} initial={1} onAdd={onAdd} />
             </VStack>
           </Stack>
           <Button

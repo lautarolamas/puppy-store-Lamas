@@ -8,6 +8,7 @@ import {
   Text,
   Stack,
   Image,
+  Button,
 } from "@chakra-ui/react";
 
 export default function Item({ item }) {
@@ -67,7 +68,9 @@ export default function Item({ item }) {
             </Text>
           </Stack>
           <Stack direction={"row"} align={"center"}>
-            <Link to={`/item/${id}`}>Ver detalle del producto</Link>
+            <Button colorScheme="blue">
+              <Link to={`/item/${id}`}>Ver detalle del producto</Link>
+            </Button>
           </Stack>
         </Stack>
       </Box>

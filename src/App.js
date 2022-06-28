@@ -4,6 +4,7 @@ import { ItemListContainer } from "./components/ItemListContainer/ItemListContai
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
 import { ChakraProvider } from "@chakra-ui/react";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
@@ -19,20 +20,9 @@ function App() {
             />
             <Route path="/item/:idItem" element={<ItemDetailContainer />} />
           </Routes>
+          <Footer />
         </ChakraProvider>
-        <div>footer </div>
       </BrowserRouter>
-      <header className="">
-        <p>Puppy Store loading . . .</p>
-        <a
-          className="App-link"
-          href="https://portafolio-lamas.netlify.app/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Creado por Lautaro Lamas
-        </a>
-      </header>
     </div>
   );
 }
