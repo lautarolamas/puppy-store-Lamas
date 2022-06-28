@@ -6,9 +6,7 @@ export const ItemList = ({ items }) => {
     <div
       style={{
         display: "grid",
-        gridTemplateColumns: "auto auto auto",
-        columnGap: "20px",
-        rowGap: "20px",
+        gridTemplateColumns: "auto auto auto auto ",
       }}
     >
       {items.map((item) => {

@@ -4,7 +4,6 @@ import { ItemCount } from "../ItemCount/ItemCount";
 
 import {
   Box,
-  chakra,
   Container,
   Stack,
   Text,
@@ -16,9 +15,6 @@ import {
   SimpleGrid,
   StackDivider,
   useColorModeValue,
-  VisuallyHidden,
-  List,
-  ListItem,
 } from "@chakra-ui/react";
 import { MdLocalShipping } from "react-icons/md";
 

@@ -1,30 +1,87 @@
 import * as React from "react";
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
 import { Link } from "react-router-dom";
+import { ChakraProvider } from "@chakra-ui/react";
+
+import {
+  Box,
+  Center,
+  useColorModeValue,
+  Heading,
+  Text,
+  Stack,
+  Image,
+} from "@chakra-ui/react";
 
 export default function Item({ item }) {
   const { id, price, title, picture } = item;
   return (
-    <Card sx={{ maxWidth: 345 }}>
-      <CardMedia component="img" height="140" src={picture} />
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          {title}
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          ${price}
-        </Typography>
-      </CardContent>
-      <CardActions>
-        <Button sx={{ textAlign: "center" }} size="small">
-          <Link to={`/item/${id}`}>Ver detalle del producto</Link>
-        </Button>
-      </CardActions>
-    </Card>
+    <ChakraProvider>
+      <Center py={12}>
+        <Box
+          role={"group"}
+          p={6}
+          maxW={"330px"}
+          w={"full"}
+          bg={useColorModeValue("white", "gray.800")}
+          boxShadow={"2xl"}
+          rounded={"lg"}
+          pos={"relative"}
+          zIndex={1}
+        >
+          <Box
+            rounded={"lg"}
+            mt={-12}
+            pos={"relative"}
+            height={"230px"}
+            _after={{
+              transition: "all .3s ease",
+              content: '""',
+              w: "full",
+              h: "full",
+              pos: "absolute",
+              top: 5,
+              left: 0,
+              backgroundImage: `url(${picture})`,
+              filter: "blur(15px)",
+              zIndex: -1,
+            }}
+            _groupHover={{
+              _after: {
+                filter: "blur(20px)",
+              },
+            }}
+          >
+            <Image
+              rounded={"lg"}
+              height={230}
+              width={282}
+              objectFit={"cover"}
+              src={picture}
+            />
+          </Box>
+          <Stack pt={10} align={"center"}>
+            <Text
+              color={"gray.500"}
+              fontSize={"sm"}
+              textTransform={"uppercase"}
+            >
+              {title}
+            </Text>
+
+            <Stack direction={"row"} align={"center"}>
+              <Text fontWeight={800} fontSize={"xl"}>
+                ${price}
+              </Text>
+            </Stack>
+            <Stack direction={"row"} align={"center"}>
+              <Link to={`/item/${id}`}>Ver detalle del producto</Link>
+            </Stack>
+          </Stack>
+        </Box>
+      </Center>
+    </ChakraProvider>
   );
+}
+{
+  /* <Link to={`/item/${id}`}>Ver detalle del producto</Link> */
 }
