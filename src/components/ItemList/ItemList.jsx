@@ -12,15 +12,7 @@ export const ItemList = ({ items }) => {
       }}
     >
       {items.map((item) => {
-        return (
-          <Item
-            key={item.id}
-            id={item.id}
-            price={item.price}
-            title={item.title}
-            pictureUrl={item.picture}
-          />
-        );
+        return <Item item={item} />;
       })}
     </div>
   );

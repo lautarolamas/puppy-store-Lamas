@@ -5,7 +5,7 @@ import RemoveIcon from "@material-ui/icons/Remove";
 import Button from "@material-ui/core/Button";
 import Tooltip from "@material-ui/core/Tooltip";
 
-const ItemCount = ({ stock, initial, onAdd }) => {
+export const ItemCount = ({ stock, initial, onAdd }) => {
   const [count, setCount] = useState(0);
   const decrementar = () => {
     if (count > 0) {
@@ -25,26 +25,23 @@ const ItemCount = ({ stock, initial, onAdd }) => {
   };
 
   return (
-    <div className="main_div">
-      <div className="center_div">
-        <h1>{count}</h1>
-        <div className="btn_div">
-          <Tooltip title="Quitar">
-            <Button onClick={decrementar}>
-              <RemoveIcon />
-            </Button>
-          </Tooltip>
-          <Tooltip title="Agregar al carrrito">
-            <Button onClick={sumar}>
-              <AddIcon />
-            </Button>
-          </Tooltip>
-        </div>
-        <div className="addToCart">
-          <Button onClick={onAdd()}>Agregar al carrito</Button>
-        </div>
+    // <div className="main_div">
+    <div className="center_div">
+      <h1>{count}</h1>
+      <div className="btn_div">
+        <Tooltip title="Quitar">
+          <Button onClick={decrementar}>
+            <RemoveIcon />
+          </Button>
+        </Tooltip>
+        <Tooltip title="Agregar al carrrito">
+          <Button onClick={sumar}>
+            <AddIcon />
+          </Button>
+        </Tooltip>
       </div>
+      {/* <Button onClick={onAdd()}>Agregar al carrito</Button> */}
     </div>
+    // </div>
   );
 };
-export default ItemCount;

@@ -7,10 +7,11 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { Link } from "react-router-dom";
 
-export default function Item({ id, price, title, pictureUrl }) {
+export default function Item({ item }) {
+  const { id, price, title, picture } = item;
   return (
     <Card sx={{ maxWidth: 345 }}>
-      <CardMedia component="img" height="140" src={pictureUrl} />
+      <CardMedia component="img" height="140" src={picture} />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
           {title}
