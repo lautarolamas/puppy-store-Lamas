@@ -44,13 +44,13 @@ export default function Item({ item }) {
           }}
           _groupHover={{
             _after: {
-              filter: "blur(20px)",
+              filter: "blur(35px)",
             },
           }}
         >
           <Image
             rounded={"lg"}
-            height={230}
+            height={270}
             width={282}
             objectFit={"cover"}
             src={picture}

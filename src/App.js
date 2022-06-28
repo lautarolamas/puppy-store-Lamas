@@ -20,7 +20,7 @@ function App() {
             <Route path="/item/:idItem" element={<ItemDetailContainer />} />
           </Routes>
         </ChakraProvider>
-        <div>ACA VA EL FOOTER </div>
+        <div>footer </div>
       </BrowserRouter>
       <header className="">
         <p>Puppy Store loading . . .</p>
