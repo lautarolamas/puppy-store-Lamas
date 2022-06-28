@@ -13,7 +13,7 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import PetsIcon from "@mui/icons-material/Pets";
 import { CartWidget } from "../CartWidget/CartWidget";
-const pages = ["Productos", "Sobre Nosotros"];
+const pages = ["Comidas", "Accesorios", "Para perros", "Para gatos"];
 const settings = ["Perfil", "Favoritos", "Cerrar Sesión"];
 
 const NavBar = () => {

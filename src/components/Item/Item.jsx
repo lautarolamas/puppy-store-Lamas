@@ -5,9 +5,9 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import { Link } from "react-router-dom";
 
 export default function Item({ id, price, title, pictureUrl }) {
-  console.log(pictureUrl);
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia component="img" height="140" src={pictureUrl} />
@@ -21,7 +21,7 @@ export default function Item({ id, price, title, pictureUrl }) {
       </CardContent>
       <CardActions>
         <Button sx={{ textAlign: "center" }} size="small">
-          Ver detalle del producto
+          <Link to={`/item/${id}`}>Ver detalle del producto</Link>
         </Button>
       </CardActions>
     </Card>

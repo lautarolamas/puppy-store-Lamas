@@ -13,15 +13,13 @@ export const ItemList = ({ items }) => {
     >
       {items.map((item) => {
         return (
-          <div style={{}}>
-            <Item
-              key={item.id}
-              id={item.id}
-              price={item.price}
-              title={item.title}
-              pictureUrl={item.picture}
-            />
-          </div>
+          <Item
+            key={item.id}
+            id={item.id}
+            price={item.price}
+            title={item.title}
+            pictureUrl={item.picture}
+          />
         );
       })}
     </div>
