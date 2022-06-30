@@ -1,164 +1,454 @@
-import * as React from "react";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import Menu from "@mui/material/Menu";
-import MenuIcon from "@mui/icons-material/Menu";
-import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
-import Tooltip from "@mui/material/Tooltip";
-import MenuItem from "@mui/material/MenuItem";
+import {
+  Box,
+  Flex,
+  Avatar,
+  Link,
+  Button,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  MenuDivider,
+  useDisclosure,
+  useColorModeValue,
+  Stack,
+  useColorMode,
+  Center,
+  Text,
+  IconButton,
+  Collapse,
+  Icon,
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  useBreakpointValue,
+  // Image,
+} from "@chakra-ui/react";
+import {
+  MoonIcon,
+  SunIcon,
+  HamburgerIcon,
+  CloseIcon,
+  ChevronDownIcon,
+  ChevronRightIcon,
+} from "@chakra-ui/icons";
 import PetsIcon from "@mui/icons-material/Pets";
 import { CartWidget } from "../CartWidget/CartWidget";
-const pages = ["Comidas", "Accesorios", "Para perros", "Para gatos"];
-const settings = ["Perfil", "Favoritos", "Cerrar Sesión"];
+// import {Link} from "react-router-dom"
 
-const NavBar = () => {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
-  const cantidad = 5;
+export default function Nav() {
+  const { colorMode, toggleColorMode } = useColorMode();
+  const { isOpen, onToggle } = useDisclosure();
+  return (
+    <Box>
+      <Flex
+        bg={useColorModeValue("#3182ce", "blue.800")}
+        color={useColorModeValue("gray.600", "white")}
+        minH={"60px"}
+        py={{ base: 2 }}
+        px={{ base: 4 }}
+        borderBottom={1}
+        borderStyle={"solid"}
+        borderColor={useColorModeValue("gray.200", "gray.900")}
+        align={"center"}
+      >
+        <Flex
+          flex={{ md: "auto" }}
+          ml={{ base: -2 }}
+          display={{ base: "flex", md: "none" }}
+        >
+          <IconButton
+            onClick={onToggle}
+            icon={
+              isOpen ? <CloseIcon w={3} h={3} /> : <HamburgerIcon w={5} h={5} />
+            }
+            variant={"ghost"}
+            aria-label={"Toggle Navigation"}
+          />
+        </Flex>
 
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
+        <Flex
+          flex={{ base: 1 }}
+          justify={{ base: "center", md: "start" }}
+          alignItems={"center"}
+        >
+          <Stack direction={"row"} align={"center"}>
+            <Text
+              textAlign={useBreakpointValue({ base: "center", md: "left" })}
+              fontFamily={"heading"}
+              color={useColorModeValue("white", "white")}
+              fontSize={{ base: "20px", md: "26px", lg: "32px" }}
+            >
+              <a href="../public/index.html">
+                {" "}
+                <PetsIcon />
+                Puppy Store
+              </a>
+            </Text>
+          </Stack>
 
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
+          <Flex display={{ base: "none", md: "flex" }} ml={10}>
+            <DesktopNav />
+          </Flex>
+        </Flex>
 
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
+        <Flex mr={3}>
+          <CartWidget cantidad={10} />
+        </Flex>
+
+        <Flex alignItems={"center"}>
+          <Stack direction={"row"} spacing={7} align={"center"}>
+            <Button onClick={toggleColorMode}>
+              {colorMode === "light" ? (
+                <MoonIcon />
+              ) : (
+                <SunIcon color={"yellow.400"} />
+              )}
+            </Button>
+
+            <Menu>
+              <MenuButton
+                as={Button}
+                rounded={"full"}
+                variant={"link"}
+                cursor={"pointer"}
+                minW={0}
+              >
+                <Avatar size={"sm"} />
+              </MenuButton>
+              <MenuList alignItems={"center"}>
+                <br />
+                <Center>
+                  <Avatar size={"2xl"} />
+                </Center>
+                <br />
+                <Center>
+                  <p>Username</p>
+                </Center>
+                <br />
+                <MenuDivider />
+                <MenuItem>Your Servers</MenuItem>
+                <MenuItem>Account Settings</MenuItem>
+                <MenuItem>Logout</MenuItem>
+              </MenuList>
+            </Menu>
+          </Stack>
+        </Flex>
+      </Flex>
+
+      <Collapse in={isOpen} animateOpacity>
+        <MobileNav />
+      </Collapse>
+    </Box>
+  );
+}
+
+const DesktopNav = () => {
+  const linkColor = useColorModeValue("white", "gray.200");
+  const linkHoverColor = useColorModeValue("gray.800", "white");
+  const popoverContentBgColor = useColorModeValue("white", "gray.800");
 
   return (
-    <AppBar position="static">
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <PetsIcon sx={{ display: { xs: "none", md: "flex" }, mr: 2 }} />
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".2rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            Puppy Store
-          </Typography>
-
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "left",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "left",
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: "block", md: "none" },
-              }}
-            >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
-          <PetsIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href=""
-            sx={{
-              mr: 2,
-              display: { xs: "flex", md: "none" },
-              flexGrow: 1,
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            Puppy Store
-          </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
+    <Stack direction={"row"} spacing={4}>
+      {NAV_ITEMS.map((navItem) => (
+        <Box key={navItem.label}>
+          <Popover trigger={"hover"} placement={"bottom-start"}>
+            <PopoverTrigger>
+              <Link
+                p={2}
+                href={navItem.href ?? "#"}
+                fontSize={"m"}
+                fontWeight={500}
+                color={linkColor}
+                _hover={{
+                  textDecoration: "none",
+                  color: linkHoverColor,
+                }}
               >
-                {page}
-              </Button>
-            ))}
-          </Box>
+                {navItem.label}
+              </Link>
+            </PopoverTrigger>
 
-          <CartWidget cantidad={cantidad} />
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Acciones rapidas">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="./perro.png" />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: "45px" }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
-        </Toolbar>
-      </Container>
-    </AppBar>
+            {navItem.children && (
+              <PopoverContent
+                border={0}
+                boxShadow={"xl"}
+                bg={popoverContentBgColor}
+                p={4}
+                rounded={"xl"}
+                minW={"sm"}
+              >
+                <Stack>
+                  {navItem.children.map((child) => (
+                    <DesktopSubNav key={child.label} {...child} />
+                  ))}
+                </Stack>
+              </PopoverContent>
+            )}
+          </Popover>
+        </Box>
+      ))}
+    </Stack>
   );
 };
-export default NavBar;
+
+const DesktopSubNav = ({ label, href, subLabel, clickeado, children }) => {
+  const popoverContentBgColor = useColorModeValue("white", "gray.800");
+
+  return (
+    <Box display={"row"} p={2} rounded={"md"}>
+      <Popover trigger={"hover"} placement={"right"}>
+        <Link
+          href={href}
+          onClick={clickeado}
+          role={"group"}
+          _hover={{ bg: useColorModeValue("pink.50", "gray.900") }}
+        >
+          <PopoverTrigger>
+            <Stack direction={"row"} align={"center"}>
+              <Box>
+                <Text
+                  transition={"all .3s ease"}
+                  _groupHover={{ color: "pink.400" }}
+                  fontWeight={500}
+                >
+                  {label}
+                </Text>
+              </Box>
+              <Flex
+                transition={"all .3s ease"}
+                transform={"translateX(-10px)"}
+                opacity={0}
+                _groupHover={{ opacity: "100%", transform: "translateX(0)" }}
+                justify={"flex-end"}
+                align={"center"}
+                flex={1}
+              >
+                <Icon color={"pink.400"} w={5} h={5} as={ChevronRightIcon} />
+              </Flex>
+            </Stack>
+          </PopoverTrigger>
+        </Link>
+        {children && (
+          <PopoverContent
+            border={0}
+            boxShadow={"xl"}
+            bg={popoverContentBgColor}
+            p={4}
+            rounded={"xl"}
+            minW={"sm"}
+          >
+            <Stack>
+              {children.map((child) => (
+                <DesktopSubSubNav key={child.label} {...child} />
+              ))}
+            </Stack>
+          </PopoverContent>
+        )}
+      </Popover>
+    </Box>
+  );
+};
+
+const DesktopSubSubNav = ({ label, href, clickeado }) => {
+  return (
+    <Link
+      href={href}
+      onClick={clickeado}
+      role={"group"}
+      display={"row"}
+      p={2}
+      rounded={"md"}
+      _hover={{ bg: useColorModeValue("pink.50", "gray.900") }}
+    >
+      <Stack direction={"row"} align={"center"}>
+        <Box>
+          <Text
+            transition={"all .3s ease"}
+            _groupHover={{ color: "pink.400" }}
+            fontWeight={500}
+          >
+            {label}
+          </Text>
+        </Box>
+        <Flex
+          transition={"all .3s ease"}
+          transform={"translateX(-10px)"}
+          opacity={0}
+          _groupHover={{ opacity: "100%", transform: "translateX(0)" }}
+          justify={"flex-end"}
+          align={"center"}
+          flex={1}
+        >
+          <Icon color={"pink.400"} w={5} h={5} as={ChevronRightIcon} />
+        </Flex>
+      </Stack>
+    </Link>
+  );
+};
+
+const MobileNav = () => {
+  return (
+    <Stack
+      bg={useColorModeValue("red.50", "gray.800")}
+      p={4}
+      display={{ md: "none" }}
+    >
+      {NAV_ITEMS.map((navItem) => (
+        <MobileNavItem key={navItem.label} {...navItem} />
+      ))}
+    </Stack>
+  );
+};
+
+const MobileNavItem = ({ label, children, href }) => {
+  const { isOpen, onToggle } = useDisclosure();
+  const colorChild = useColorModeValue("gray.700", "gray.200");
+  const colorBorder = useColorModeValue("gray.200", "gray.700");
+
+  return (
+    <>
+      <Stack spacing={4} onClick={children && onToggle}>
+        <Flex
+          py={2}
+          as={Link}
+          href={href ?? "#"}
+          justify={"space-between"}
+          align={"center"}
+          _hover={{
+            textDecoration: "none",
+          }}
+        >
+          <Text
+            fontWeight={600}
+            color={useColorModeValue("gray.600", "gray.200")}
+          >
+            {label}
+          </Text>
+          {children && (
+            <Icon
+              as={ChevronDownIcon}
+              transition={"all .25s ease-in-out"}
+              transform={isOpen ? "rotate(180deg)" : ""}
+              w={6}
+              h={6}
+            />
+          )}
+        </Flex>
+
+        <Collapse
+          in={isOpen}
+          animateOpacity
+          style={{ marginTop: "0!important" }}
+        >
+          <Stack
+            mt={2}
+            pl={4}
+            borderLeft={1}
+            borderStyle={"solid"}
+            borderColor={useColorModeValue("gray.200", "gray.700")}
+            align={"start"}
+          >
+            {children &&
+              children.map((child) => (
+                <Stack>
+                  <Link
+                    key={child.label}
+                    py={2}
+                    href={child.href}
+                    onClick={child.clickeado}
+                    children={child.children}
+                  >
+                    <Flex
+                      py={2}
+                      as={Link}
+                      href={child.href ?? "#"}
+                      justify={"space-between"}
+                      align={"center"}
+                      _hover={{
+                        textDecoration: "none",
+                      }}
+                    >
+                      <Text fontWeight={600} color={colorChild}>
+                        {child.label}
+                      </Text>
+                    </Flex>
+                  </Link>
+
+                  <Collapse
+                    in={isOpen}
+                    animateOpacity
+                    style={{ marginTop: "0!important" }}
+                  >
+                    <Stack
+                      mt={2}
+                      pl={4}
+                      borderLeft={1}
+                      borderStyle={"solid"}
+                      borderColor={colorBorder}
+                      align={"start"}
+                    >
+                      {child.children &&
+                        child.children.map((subchild) => (
+                          <Link
+                            key={subchild.label}
+                            py={2}
+                            href={subchild.href}
+                            onClick={subchild.clickeado}
+                          >
+                            {subchild.label}
+                          </Link>
+                        ))}
+                    </Stack>
+                  </Collapse>
+                </Stack>
+              ))}
+          </Stack>
+        </Collapse>
+      </Stack>
+    </>
+  );
+};
+
+const NAV_ITEMS = [
+  {
+    label: "Alimentos ",
+    children: [
+      {
+        label: "Alimentos",
+        href: "#",
+        clickeado: () => alert("me hiciste click"),
+        // children: [
+        //   {
+        //     label: "Alimentos",
+        //     href: "#",
+        //     clickeado: () => alert("alimentos1"),
+        //   },
+        // ],
+      },
+    ],
+  },
+  {
+    label: "Accesorios",
+    children: [
+      {
+        label: "Todos",
+        href: "category/accesorios",
+        // clickeado: () => alert("click todos"),
+        clickeado: () => <Link to="/category/accesorios">Home</Link>,
+        children: [
+          {
+            label: "Para perros",
+            href: "category/perro",
+            // clickeado: () => alert("click en para perros"),
+          },
+          {
+            label: "Para gatos",
+            href: "category/gatos",
+            // clickeado: () => alert("click en para gatos"),
+          },
+        ],
+      },
+    ],
+  },
+];

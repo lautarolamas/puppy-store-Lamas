@@ -9,9 +9,9 @@ import Footer from "./components/Footer/Footer";
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
+      <ChakraProvider>
         <NavBar />
-        <ChakraProvider>
+        <BrowserRouter>
           <Routes>
             <Route path="/" element={<ItemListContainer />} />
             <Route
@@ -21,8 +21,8 @@ function App() {
             <Route path="/item/:idItem" element={<ItemDetailContainer />} />
           </Routes>
           <Footer />
-        </ChakraProvider>
-      </BrowserRouter>
+        </BrowserRouter>
+      </ChakraProvider>
     </div>
   );
 }
