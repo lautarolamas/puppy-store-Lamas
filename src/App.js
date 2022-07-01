@@ -10,8 +10,8 @@ function App() {
   return (
     <div className="App">
       <ChakraProvider>
-        <NavBar />
         <BrowserRouter>
+          <NavBar />
           <Routes>
             <Route path="/" element={<ItemListContainer />} />
             <Route

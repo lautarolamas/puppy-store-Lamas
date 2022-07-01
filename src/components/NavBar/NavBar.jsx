@@ -34,7 +34,7 @@ import {
 } from "@chakra-ui/icons";
 import PetsIcon from "@mui/icons-material/Pets";
 import { CartWidget } from "../CartWidget/CartWidget";
-// import {Link} from "react-router-dom"
+import { NavLink } from "react-router-dom";
 
 export default function Nav() {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -416,8 +416,8 @@ const NAV_ITEMS = [
     children: [
       {
         label: "Alimentos",
-        href: "#",
-        clickeado: () => alert("me hiciste click"),
+        href: <NavLink to={"/category/alimento"} />,
+        clickeado: () => alert("alimentos"),
         // children: [
         //   {
         //     label: "Alimentos",
