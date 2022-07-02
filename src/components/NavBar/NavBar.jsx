@@ -35,6 +35,7 @@ import {
 import PetsIcon from "@mui/icons-material/Pets";
 import { CartWidget } from "../CartWidget/CartWidget";
 import { NavLink } from "react-router-dom";
+import * as Router from "react-router-dom";
 
 export default function Nav() {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -433,9 +434,9 @@ const NAV_ITEMS = [
     children: [
       {
         label: "Todos",
-        href: "category/accesorios",
+        href: "/category/accesorios",
         // clickeado: () => alert("click todos"),
-        clickeado: () => <Link to="/category/accesorios">Home</Link>,
+        clickeado: () => <Router.Link to="/category/accesorios">Home</Router.Link>,
         children: [
           {
             label: "Para perros",
