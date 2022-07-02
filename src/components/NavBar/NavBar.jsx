@@ -34,7 +34,7 @@ import {
 } from "@chakra-ui/icons";
 import PetsIcon from "@mui/icons-material/Pets";
 import { CartWidget } from "../CartWidget/CartWidget";
-import { NavLink } from "react-router-dom";
+import * as Router from "react-router-dom";
 
 export default function Nav() {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -79,7 +79,7 @@ export default function Nav() {
               color={useColorModeValue("white", "white")}
               fontSize={{ base: "20px", md: "26px", lg: "32px" }}
             >
-              <a href="../public/index.html">
+              <a href="/">
                 {" "}
                 <PetsIcon />
                 Puppy Store
@@ -413,39 +413,43 @@ const MobileNavItem = ({ label, children, href }) => {
 const NAV_ITEMS = [
   {
     label: "Alimentos ",
+    href: "/category/alimento",
     children: [
       {
         label: "Alimentos",
-        href: <NavLink to={"/category/alimento"} />,
-        clickeado: () => alert("alimentos"),
-        // children: [
-        //   {
-        //     label: "Alimentos",
-        //     href: "#",
-        //     clickeado: () => alert("alimentos1"),
-        //   },
-        // ],
+        href: "/category/alimento",
+        clickeado: () => (
+          <Router.Link to="/category/alimento">alimentos</Router.Link>
+        ),
       },
     ],
   },
   {
     label: "Accesorios",
+    href: "/category/accesorios",
     children: [
       {
         label: "Todos",
-        href: "category/accesorios",
+        href: "/category/accesorios",
         // clickeado: () => alert("click todos"),
-        clickeado: () => <Link to="/category/accesorios">Home</Link>,
+        clickeado: () => (
+          <Router.Link to="/category/accesorios">accesorios</Router.Link>
+        ),
         children: [
           {
             label: "Para perros",
-            href: "category/perro",
-            // clickeado: () => alert("click en para perros"),
+            href: "/category/perro",
+            clickeado: () => (
+              <Router.Link to="/category/perro">perro</Router.Link>
+            ),
           },
           {
             label: "Para gatos",
-            href: "category/gatos",
-            // clickeado: () => alert("click en para gatos"),
+            // href: "/category/gatos",
+            href: "/category/gatos",
+            clickeado: () => (
+              <Router.Link to="/category/gatos">gatos</Router.Link>
+            ),
           },
         ],
       },
