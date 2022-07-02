@@ -1,4 +1,3 @@
-// @ts-check
 import React, { useState } from "react";
 import { ItemList } from "../ItemList/ItemList";
 import { products } from "../../mock/mockObjects";
@@ -8,6 +7,7 @@ import { useParams } from "react-router-dom";
 export const ItemListContainer = () => {
   const [items, setItems] = useState([]);
   const { idCategory } = useParams();
+
   useEffect(() => {
     new Promise((resolve, reject) => {
       setTimeout(() => {
