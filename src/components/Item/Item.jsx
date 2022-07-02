@@ -13,7 +13,7 @@ import {
 
 export default function Item({ item }) {
   const { id, price, title, picture } = item;
-  // SUERTE CAMPEON
+
   return (
     <Center py={12}>
       <Box
