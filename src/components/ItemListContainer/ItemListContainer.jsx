@@ -3,7 +3,7 @@ import { ItemList } from "../ItemList/ItemList";
 import { products } from "../../mock/mockObjects";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-
+import Bienvenida from "../../pages/Bienvenida";
 export const ItemListContainer = () => {
   const [items, setItems] = useState([]);
   const { idCategory } = useParams();
@@ -27,6 +27,8 @@ export const ItemListContainer = () => {
 
   return (
     <div>
+      <Bienvenida /> <br></br>
+      <br></br>
       <ItemList items={items} />
     </div>
   );
