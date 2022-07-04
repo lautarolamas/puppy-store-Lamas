@@ -5,7 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
 import { ChakraProvider } from "@chakra-ui/react";
 import Footer from "./components/Footer/Footer";
-
+import { WelcomeAndItems } from "./pages/WelcomeAndItems";
 function App() {
   return (
     <div className="App">
@@ -13,7 +13,7 @@ function App() {
         <BrowserRouter>
           <NavBar />
           <Routes>
-            <Route path="/" element={<ItemListContainer />} />
+            <Route path="/" element={<WelcomeAndItems />} />
             <Route
               path="/category/:idCategory"
               element={<ItemListContainer />}

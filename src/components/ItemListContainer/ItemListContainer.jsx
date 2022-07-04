@@ -27,8 +27,6 @@ export const ItemListContainer = () => {
 
   return (
     <div>
-      <Bienvenida /> <br></br>
-      <br></br>
       <ItemList items={items} />
     </div>
   );

@@ -394,7 +394,7 @@ const MobileNavItem = ({ label, children, href }) => {
                             key={subchild.label}
                             py={2}
                             href={subchild.href}
-                            onClick={subchild.clickeado}
+                            // onClick={subchild.clickeado}
                           >
                             {subchild.label}
                           </Link>
