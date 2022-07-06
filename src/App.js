@@ -6,6 +6,7 @@ import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailCont
 import { ChakraProvider } from "@chakra-ui/react";
 import Footer from "./components/Footer/Footer";
 import { WelcomeAndItems } from "./pages/WelcomeAndItems";
+import Cart from "./components/Cart/Cart";
 function App() {
   return (
     <div className="App">
@@ -14,6 +15,7 @@ function App() {
           <NavBar />
           <Routes>
             <Route path="/" element={<WelcomeAndItems />} />
+            <Route path="/cart" element={<Cart />} />
             <Route
               path="/category/:idCategory"
               element={<ItemListContainer />}

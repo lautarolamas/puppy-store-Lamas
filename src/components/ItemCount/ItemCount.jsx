@@ -6,7 +6,8 @@ import Button from "@material-ui/core/Button";
 import Tooltip from "@material-ui/core/Tooltip";
 
 export const ItemCount = ({ stock, initial, onAdd }) => {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(initial);
+
   const decrementar = () => {
     if (count > 0) {
       setCount(count - 1);
@@ -43,7 +44,7 @@ export const ItemCount = ({ stock, initial, onAdd }) => {
           </div>
         </Tooltip>
       </div>
-      {/* <Button onClick={onAdd()}>Agregar al carrito</Button> */}
+      <Button onClick={() => onAdd(count)}>Agregar al carrito</Button>
     </div>
   );
 };

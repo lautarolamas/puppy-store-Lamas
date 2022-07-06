@@ -1,5 +1,6 @@
 import React from "react";
 import { ItemCount } from "../ItemCount/ItemCount";
+import { Link } from "react-router-dom";
 
 import {
   Box,
@@ -98,6 +99,25 @@ const ItemDetail = ({ item }) => {
           >
             Agregar al carrito
           </Button>
+          <br></br>
+          <Link to={"/cart"}>
+            <Button
+              rounded={"none"}
+              w={"full"}
+              mt={8}
+              size={"lg"}
+              py={"7"}
+              bg={useColorModeValue("gray.400", "gray.50")}
+              color={useColorModeValue("white", "gray.900")}
+              textTransform={"uppercase"}
+              _hover={{
+                transform: "translateY(2px)",
+                boxShadow: "lg",
+              }}
+            >
+              TERMINAR COMPRA
+            </Button>
+          </Link>
 
           <Stack direction="row" alignItems="center" justifyContent={"center"}>
             <MdLocalShipping />

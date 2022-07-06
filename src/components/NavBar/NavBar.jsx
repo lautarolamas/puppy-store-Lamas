@@ -394,7 +394,7 @@ const MobileNavItem = ({ label, children, href }) => {
                             key={subchild.label}
                             py={2}
                             href={subchild.href}
-                            // onClick={subchild.clickeado}
+                            onClick={subchild.clickeado}
                           >
                             {subchild.label}
                           </Link>
@@ -431,7 +431,7 @@ const NAV_ITEMS = [
       {
         label: "Todos",
         href: "/category/accesorios",
-        // clickeado: () => alert("click todos"),
+
         clickeado: () => (
           <Router.Link to="/category/accesorios">accesorios</Router.Link>
         ),
@@ -445,7 +445,7 @@ const NAV_ITEMS = [
           },
           {
             label: "Para gatos",
-            // href: "/category/gatos",
+
             href: "/category/gatos",
             clickeado: () => (
               <Router.Link to="/category/gatos">gatos</Router.Link>
