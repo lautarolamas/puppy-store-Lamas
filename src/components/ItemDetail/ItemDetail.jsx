@@ -1,6 +1,7 @@
-import React from "react";
+import { useState, useContext } from "react";
 import { ItemCount } from "../ItemCount/ItemCount";
 import { Link } from "react-router-dom";
+import { CartContext } from "../context/CartContex";
 
 import {
   Box,
@@ -20,13 +21,22 @@ import { MdLocalShipping } from "react-icons/md";
 
 const ItemDetail = ({ item }) => {
   const { title, price, picture, descripcion } = item;
-  const onAdd = (stock) => {
-    if (stock > 0) {
-      alert("Usted agrego productos al carrito de compras !!!");
+  const [addedToCart, setAddedToCart] = useState(false);
+  const { addItem, quantityInCart, removeItem } = useContext(CartContext);
+
+  const onAdd = (count) => {
+    if (count > 0) {
+      addItem({ ...item, quantity: count });
+      setAddedToCart(true);
     } else {
-      return;
+      alert("Error al agregar al carrito: La cantidad no puede ser 0");
     }
   };
+  //esta funcion se va a usar para borrar del carrito :)
+  // const removeFromCart = () => {
+  //   removeItem(id);
+  //   setAddedToCart(false);
+  // };
   return (
     <Container maxW={"7xl"}>
       <SimpleGrid

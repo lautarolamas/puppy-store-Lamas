@@ -7,22 +7,27 @@ import { ChakraProvider } from "@chakra-ui/react";
 import Footer from "./components/Footer/Footer";
 import { WelcomeAndItems } from "./pages/WelcomeAndItems";
 import Cart from "./components/Cart/Cart";
+import testFirebase from "./firebase/testFirebase";
+import { CartProvider } from "./components/context/CartContex";
 function App() {
   return (
     <div className="App">
       <ChakraProvider>
         <BrowserRouter>
-          <NavBar />
-          <Routes>
-            <Route path="/" element={<WelcomeAndItems />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route
-              path="/category/:idCategory"
-              element={<ItemListContainer />}
-            />
-            <Route path="/item/:idItem" element={<ItemDetailContainer />} />
-          </Routes>
-          <Footer />
+          <CartProvider>
+            <NavBar />
+            <Routes>
+              <Route path="/" element={<WelcomeAndItems />} />
+              <Route path="/cart" element={<Cart />} />
+              <Route
+                path="/category/:idCategory"
+                element={<ItemListContainer />}
+              />
+              {/* <Route path="/testFirebase" element={<testFirebase />} /> */}
+              <Route path="/item/:idItem" element={<ItemDetailContainer />} />
+            </Routes>
+            <Footer />
+          </CartProvider>
         </BrowserRouter>
       </ChakraProvider>
     </div>
