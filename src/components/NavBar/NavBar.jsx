@@ -22,7 +22,7 @@ import {
   PopoverTrigger,
   PopoverContent,
   useBreakpointValue,
-  // Image,
+  Image,
 } from "@chakra-ui/react";
 import {
   MoonIcon,
@@ -33,7 +33,7 @@ import {
   ChevronRightIcon,
 } from "@chakra-ui/icons";
 import PetsIcon from "@mui/icons-material/Pets";
-import { CartWidget } from "../CartWidget/CartWidget";
+import CartWidget from "../CartWidget/CartWidget";
 import * as Router from "react-router-dom";
 
 export default function Nav() {
@@ -79,11 +79,11 @@ export default function Nav() {
               color={useColorModeValue("white", "white")}
               fontSize={{ base: "20px", md: "26px", lg: "32px" }}
             >
-              <a href="/">
+              <Router.Link to={"/"}>
                 {" "}
                 <PetsIcon />
                 Puppy Store
-              </a>
+              </Router.Link>
             </Text>
           </Stack>
 
@@ -114,12 +114,19 @@ export default function Nav() {
                 cursor={"pointer"}
                 minW={0}
               >
-                <Avatar size={"sm"} />
+                <Avatar
+                  size={"sm"}
+                  name="Prosper Otemuyiwa"
+                  src="https://bit.ly/prosper-baba"
+                />
               </MenuButton>
               <MenuList alignItems={"center"}>
                 <br />
                 <Center>
-                  <Avatar size={"2xl"} />
+                  <Avatar
+                    name="Prosper Otemuyiwa"
+                    src="https://bit.ly/prosper-baba"
+                  />
                 </Center>
                 <br />
                 <Center>
@@ -127,9 +134,8 @@ export default function Nav() {
                 </Center>
                 <br />
                 <MenuDivider />
-                <MenuItem>Your Servers</MenuItem>
-                <MenuItem>Account Settings</MenuItem>
-                <MenuItem>Logout</MenuItem>
+                <MenuItem>Ajustes</MenuItem>
+                <MenuItem>Cerrar Sesión</MenuItem>
               </MenuList>
             </Menu>
           </Stack>

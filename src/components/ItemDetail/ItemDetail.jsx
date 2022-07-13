@@ -90,10 +90,11 @@ const ItemDetail = ({ item }) => {
               >
                 {descripcion}
               </Text>
-              <ItemCount stock={10} initial={1} onAdd={onAdd} />
+              <ItemCount stock={10} initial={1} item={item} />
             </VStack>
           </Stack>
-          <Button
+
+          {/* <Button
             rounded={"none"}
             w={"full"}
             mt={8}
@@ -107,8 +108,8 @@ const ItemDetail = ({ item }) => {
               boxShadow: "lg",
             }}
           >
-            Agregar al carrito
-          </Button>
+            Terminar compra{" "}
+          </Button> */}
           <br></br>
           <Link to={"/cart"}>
             <Button
@@ -117,7 +118,7 @@ const ItemDetail = ({ item }) => {
               mt={8}
               size={"lg"}
               py={"7"}
-              bg={useColorModeValue("gray.400", "gray.50")}
+              bg={useColorModeValue("gray.900", "gray.50")}
               color={useColorModeValue("white", "gray.900")}
               textTransform={"uppercase"}
               _hover={{

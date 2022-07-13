@@ -1,12 +1,14 @@
 import "./index.css";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import AddIcon from "@material-ui/icons/Add";
 import RemoveIcon from "@material-ui/icons/Remove";
 import Button from "@material-ui/core/Button";
 import Tooltip from "@material-ui/core/Tooltip";
+import { CartContext } from "../context/CartContex";
 
-export const ItemCount = ({ stock, initial, onAdd }) => {
+export const ItemCount = ({ stock, initial, item }) => {
   const [count, setCount] = useState(initial);
+  const Contexto = useContext(CartContext);
 
   const decrementar = () => {
     if (count > 0) {
@@ -44,7 +46,12 @@ export const ItemCount = ({ stock, initial, onAdd }) => {
           </div>
         </Tooltip>
       </div>
-      <Button onClick={() => onAdd(count)}>Agregar al carrito</Button>
+      <div className="addToCart">
+        {" "}
+        <Button onClick={() => Contexto.addItem(item, count)}>
+          Agregar al carrito
+        </Button>
+      </div>
     </div>
   );
 };

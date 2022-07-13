@@ -7,9 +7,9 @@ export const CartProvider = ({ children }) => {
 
   //   useEffect(() => {}, []);
 
-  const addItem = (item) => {
+  const addItem = (item, count) => {
     let newCart = [];
-
+    item.quantity = count;
     if (isInCart(item.id)) {
       newCart = cart.reduce((acc, _item) => {
         if (item.id !== _item.id) {
@@ -41,6 +41,11 @@ export const CartProvider = ({ children }) => {
     return cart.some((_item) => _item.id === id);
   };
 
+  function total() {
+    const total = cart.reduce((prev, next) => prev + next.quantity, 0);
+    return total;
+  }
+
   return (
     <CartContext.Provider
       value={{
@@ -49,6 +54,7 @@ export const CartProvider = ({ children }) => {
         removeItem,
         clear,
         isInCart,
+        total,
       }}
     >
       {children}
