@@ -5,8 +5,9 @@
 }
 .addToCart {
   margin-top: 12px;
-  color: white;
-  background-color: black;
+  color: white !important;
+  font-weight: bold;
+  background-color: white;
 }
 
 .center_div {

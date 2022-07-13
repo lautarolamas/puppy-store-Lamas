@@ -41,10 +41,16 @@ export const CartProvider = ({ children }) => {
     return cart.some((_item) => _item.id === id);
   };
 
-  function total() {
+  const total = () => {
     const total = cart.reduce((prev, next) => prev + next.quantity, 0);
     return total;
-  }
+  };
+  const priceTotalCart = () => {
+    return cart.reduce((acc, _item) => {
+      let multi = _item.quantity * _item.price;
+      return multi + acc;
+    }, 0);
+  };
 
   return (
     <CartContext.Provider
@@ -55,6 +61,7 @@ export const CartProvider = ({ children }) => {
         clear,
         isInCart,
         total,
+        priceTotalCart,
       }}
     >
       {children}
