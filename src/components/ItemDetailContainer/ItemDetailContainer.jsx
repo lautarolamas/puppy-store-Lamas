@@ -12,7 +12,7 @@ const ItemDetailContainer = () => {
     new Promise((resolve, reject) => {
       setTimeout(() => {
         resolve(products);
-      }, 2000);
+      }, 300);
     }).then((res) => {
       const item = res.find((item) => item.id == idItem);
 

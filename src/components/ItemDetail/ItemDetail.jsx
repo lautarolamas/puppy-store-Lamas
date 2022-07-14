@@ -22,7 +22,7 @@ import { MdLocalShipping } from "react-icons/md";
 const ItemDetail = ({ item }) => {
   const { title, price, picture, descripcion } = item;
   const [addedToCart, setAddedToCart] = useState(false);
-  const { addItem, quantityInCart, removeItem } = useContext(CartContext);
+  const { addItem } = useContext(CartContext);
 
   const onAdd = (count) => {
     if (count > 0) {
@@ -111,7 +111,7 @@ const ItemDetail = ({ item }) => {
             Terminar compra{" "}
           </Button> */}
           <br></br>
-          <Link to={"/cart"}>
+          {/* <Link to={"/cart"}>
             <Button
               rounded={"none"}
               w={"full"}
@@ -128,7 +128,7 @@ const ItemDetail = ({ item }) => {
             >
               TERMINAR COMPRA
             </Button>
-          </Link>
+          </Link> */}
 
           <Stack direction="row" alignItems="center" justifyContent={"center"}>
             <MdLocalShipping />

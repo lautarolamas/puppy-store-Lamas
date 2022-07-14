@@ -12,8 +12,8 @@ import { CartProvider } from "./components/context/CartContex";
 function App() {
   return (
     <div className="App">
-      <ChakraProvider>
-        <BrowserRouter>
+      <BrowserRouter>
+        <ChakraProvider>
           <CartProvider>
             <NavBar />
             <Routes>
@@ -28,8 +28,8 @@ function App() {
             </Routes>
             <Footer />
           </CartProvider>
-        </BrowserRouter>
-      </ChakraProvider>
+        </ChakraProvider>
+      </BrowserRouter>
     </div>
   );
 }

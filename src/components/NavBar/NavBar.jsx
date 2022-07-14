@@ -161,8 +161,9 @@ const DesktopNav = () => {
           <Popover trigger={"hover"} placement={"bottom-start"}>
             <PopoverTrigger>
               <Link
+                as={Router.Link}
+                to={navItem.href}
                 p={2}
-                href={navItem.href ?? "#"}
                 fontSize={"m"}
                 fontWeight={500}
                 color={linkColor}
@@ -205,7 +206,8 @@ const DesktopSubNav = ({ label, href, subLabel, clickeado, children }) => {
     <Box display={"row"} p={2} rounded={"md"}>
       <Popover trigger={"hover"} placement={"right"}>
         <Link
-          href={href}
+          as={Router.Link}
+          to={href}
           onClick={clickeado}
           role={"group"}
           _hover={{ bg: useColorModeValue("pink.50", "gray.900") }}
@@ -259,7 +261,8 @@ const DesktopSubNav = ({ label, href, subLabel, clickeado, children }) => {
 const DesktopSubSubNav = ({ label, href, clickeado }) => {
   return (
     <Link
-      href={href}
+      as={Router.Link}
+      to={href}
       onClick={clickeado}
       role={"group"}
       display={"row"}
@@ -317,7 +320,7 @@ const MobileNavItem = ({ label, children, href }) => {
       <Stack spacing={4} onClick={children && onToggle}>
         <Flex
           py={2}
-          as={Link}
+          // as={Router.Link}
           href={href ?? "#"}
           justify={"space-between"}
           align={"center"}
@@ -359,15 +362,16 @@ const MobileNavItem = ({ label, children, href }) => {
               children.map((child) => (
                 <Stack>
                   <Link
+                    as={Router.Link}
+                    to={child.href}
                     key={child.label}
                     py={2}
-                    href={child.href}
                     onClick={child.clickeado}
                     children={child.children}
                   >
                     <Flex
                       py={2}
-                      as={Link}
+                      // as={Router.Link}
                       href={child.href ?? "#"}
                       justify={"space-between"}
                       align={"center"}
@@ -397,9 +401,10 @@ const MobileNavItem = ({ label, children, href }) => {
                       {child.children &&
                         child.children.map((subchild) => (
                           <Link
+                            as={Router.Link}
+                            to={subchild.href}
                             key={subchild.label}
                             py={2}
-                            href={subchild.href}
                             onClick={subchild.clickeado}
                           >
                             {subchild.label}
@@ -424,12 +429,10 @@ const NAV_ITEMS = [
       {
         label: "Alimentos",
         href: "/category/alimento",
-        clickeado: () => (
-          <Router.Link to="/category/alimento">alimentos</Router.Link>
-        ),
       },
     ],
   },
+
   {
     label: "Accesorios",
     href: "/category/accesorios",
@@ -437,25 +440,14 @@ const NAV_ITEMS = [
       {
         label: "Todos",
         href: "/category/accesorios",
-
-        clickeado: () => (
-          <Router.Link to="/category/accesorios">accesorios</Router.Link>
-        ),
         children: [
           {
             label: "Para perros",
             href: "/category/perro",
-            clickeado: () => (
-              <Router.Link to="/category/perro">perro</Router.Link>
-            ),
           },
           {
             label: "Para gatos",
-
             href: "/category/gatos",
-            clickeado: () => (
-              <Router.Link to="/category/gatos">gatos</Router.Link>
-            ),
           },
         ],
       },

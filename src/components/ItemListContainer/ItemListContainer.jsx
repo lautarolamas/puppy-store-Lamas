@@ -12,7 +12,7 @@ export const ItemListContainer = () => {
     new Promise((resolve, reject) => {
       setTimeout(() => {
         resolve(products);
-      }, 2000);
+      }, 300);
     }).then((res) => {
       if (idCategory == undefined) {
         setItems(res);
@@ -23,7 +23,7 @@ export const ItemListContainer = () => {
         setItems(filterCategory);
       }
     });
-  }, []);
+  }, [idCategory]);
 
   return (
     <div>
