@@ -36,56 +36,58 @@ const SocialButton = ({ children, label, href }) => {
 
 export default function Footer() {
   return (
-    <Box
-      bg={useColorModeValue("gray.900", "gray.900")}
-      color={useColorModeValue("white", "gray.200")}
-    >
-      <Container
-        as={Stack}
-        maxW={"6xl"}
-        py={4}
-        spacing={4}
-        justify={"center"}
-        align={"center"}
-      >
-        <Stack direction={"row"} spacing={6}>
-          <Link href={"#"}>Home</Link>
-          <Link href={"#"}>Sobre Nosotros</Link>
-          <Link href={"https://portafolio-lamas.netlify.app"}>Contacto</Link>
-        </Stack>
-      </Container>
-
+    <div className="footerAbajo">
       <Box
-        borderTopWidth={1}
-        borderStyle={"solid"}
-        borderColor={useColorModeValue("gray.200", "gray.700")}
+        bg={useColorModeValue("gray.900", "gray.900")}
+        color={useColorModeValue("white", "gray.200")}
       >
         <Container
           as={Stack}
           maxW={"6xl"}
           py={4}
-          direction={{ base: "column", md: "row" }}
           spacing={4}
-          justify={{ base: "center", md: "space-between" }}
-          align={{ base: "center", md: "center" }}
+          justify={"center"}
+          align={"center"}
         >
-          <Text>© 2022 Puppy Store. Todos los derechos son reservados</Text>
           <Stack direction={"row"} spacing={6}>
-            <SocialButton
-              label={"Github"}
-              href={"https://github.com/lautarolamas/puppy-store-Lamas"}
-            >
-              <FaGithub />
-            </SocialButton>
-            <SocialButton
-              label={"Linkedin"}
-              href={"https://www.linkedin.com/in/lautaro-lamas-504643169/"}
-            >
-              <FaLinkedin />
-            </SocialButton>
+            <Link href={"#"}>Home</Link>
+            <Link href={"#"}>Sobre Nosotros</Link>
+            <Link href={"https://portafolio-lamas.netlify.app"}>Contacto</Link>
           </Stack>
         </Container>
+
+        <Box
+          borderTopWidth={1}
+          borderStyle={"solid"}
+          borderColor={useColorModeValue("gray.200", "gray.700")}
+        >
+          <Container
+            as={Stack}
+            maxW={"6xl"}
+            py={4}
+            direction={{ base: "column", md: "row" }}
+            spacing={4}
+            justify={{ base: "center", md: "space-between" }}
+            align={{ base: "center", md: "center" }}
+          >
+            <Text>© 2022 Puppy Store. Todos los derechos son reservados</Text>
+            <Stack direction={"row"} spacing={6}>
+              <SocialButton
+                label={"Github"}
+                href={"https://github.com/lautarolamas/puppy-store-Lamas"}
+              >
+                <FaGithub />
+              </SocialButton>
+              <SocialButton
+                label={"Linkedin"}
+                href={"https://www.linkedin.com/in/lautaro-lamas-504643169/"}
+              >
+                <FaLinkedin />
+              </SocialButton>
+            </Stack>
+          </Container>
+        </Box>
       </Box>
-    </Box>
+    </div>
   );
 }
