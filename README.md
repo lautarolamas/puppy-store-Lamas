@@ -1,70 +1,105 @@
-# Getting Started with Create React App
+# PuppyStore
 
-El objetivo del proyecto es crear una tienda de mascostas ( Puppy Store ) en la cual el usuario pueda seleccionar diversos elementos relacionados a comprar.
+## Descripción
 
-## Available Scripts
+Este repositorio contiene el proyecto desarrollado durante el curso de `React JS` de `Coderhouse`.
 
-In the project directory, you can run:
+La aplicación consiste en un ecommerce en el cual se puede filtrar los productos de acuerdo a categorías, y acceder a ver el detalle de cada producto. Los mismos pueden ser agregados al carrito para luego completar un formulario simulando un proceso de compra completo.
 
-### `npm start`
+Tanto el listado de categorías, como los productos y las órdenes generadas se almacenan en `Firebase`.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Tecnologías utilizadas
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- [React JS](https://reactjs.org/)
+- [React Router Dom](https://reactrouter.com/)
+- [Chakra UI](https://chakra-ui.com/)
+- [Firebase](https://firebase.google.com/)
+- [Vercel](https://vercel.com/) (para deploy)
 
-### `npm test`
+## Ejecutar el proyecto
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Para ejecutar el proyecto, el mismo puede descargarse como .zip o clonarlo con:
 
-### `npm run build`
+```
+git clone https://github.com/lautarolamas/puppy-store-Lamas.git
+cd PUPPY-STORE
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Instalar las dependencias:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+npm install
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Luego es necesario crear un proyecto en Firebase y crear dos colecciones en Firestore (una con el nombre `products` donde se ingresarán los productos, y otra con el nombre `categories` para almacenar las categorías que corresponden a los productos creados y se mostrarán en la NavBar). Los items de ambas colecciones deben crearse manualmente desde Firebase.
 
-### `npm run eject`
+##### Ejemplo de product:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```
+product = {
+  category: "comidas"
+  description: "descripción"
+  pictureUrl: "url de la imagen"
+  price: 450
+  shortDescription: "Ejemplo de descripción corta"
+  stock: 100
+  title: "Nombre del producto"
+}
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+##### Ejemplo de category:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```
+product = {
+  label: "Comidas"
+  slug: "comidas"
+}
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+La colección `orders` se creará automáticamente al generar la primer orden de compra.
 
-## Learn More
+Una vez disponible la aplicación en Firebase, habiendo cargado productos y categorías, renombrar el archivo `.env.example` ubicado en la raíz del proyecto a `.env` y completar las variables de configuración provistas por Firebase:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
+REACT_APP_FIREBASE_API_KEY=
+REACT_APP_FIREBASE_AUTH_DOMAIN=
+REACT_APP_FIREBASE_PROJECT_ID=
+REACT_APP_FIREBASE_STORAGE_BUCKET=
+REACT_APP_FIREBASE_MESSAGING_SENDER_ID=
+REACT_APP_FIREBASE_APP_ID=
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Luego iniciar el servidor con:
 
-### Code Splitting
+```
+npm start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+El proyecto estará corriendo en `http://localhost:3000`
 
-### Analyzing the Bundle Size
+## Consideraciones adicionales
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### CHAKRA UI
 
-### Making a Progressive Web App
+Se escogió CHAKRA UI como librería de componentes para agilizar el proceso de desarrollo y estilado de la aplicación, aprovechando la posibilidad de extender los componentes mediante el uso de themes.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Firebase
 
-### Advanced Configuration
+En Firebase se almacenaron, además del listado de productos y las órdenes generadas, las categorías correspondientes a los productos.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### LocalStorage
 
-### Deployment
+Se utilizó LocalStorage para persistir el carrito de los usuarios en sus dispositivos en el caso de que no finalicen el flujo de compra para mejorar la experiencia de uso.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### Control de Stock
 
-### `npm run build` fails to minify
+Se implementó control de stock en dos puntos del flujo de compra para evitar que un usuario pueda adquirir una cantidad mayor de un producto de la que se encuentre disponible:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Al enviar la orden a Firebase, comparando la cantidad de items a adquirir con la disponible en la base de datos.
+- Cuando el usuario ya tiene un producto en el carrito y vuelve a acceder al mismo para agregar más, la cantidad máxima que podrá agregar corresponde al stock original menos la cantidad ya existente el carrito.
+
+Luego de ingresar una order correctamente, el stock del producto se actualiza automáticamente en la base de datos.
+
+### Dark/Light Modes
+
+La aplicación se inicia por defecto en modo oscuro por preferencia personal, pero es posible alternar entre ambos modos desde el botón ubicado en el NavBar en la versión de escritorio, o en el Drawer en la versión mobile.
