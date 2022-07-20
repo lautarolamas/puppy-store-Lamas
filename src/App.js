@@ -9,7 +9,7 @@ import { WelcomeAndItems } from "./pages/WelcomeAndItems";
 import Cart from "./components/Cart/Cart";
 import { CategoriesProvider } from "./components/context/CategoriesContext";
 import { CartProvider } from "./components/context/CartContex";
-import { Checkout } from "./components/Checkout/Checkout";
+import Checkout from "./components/Checkout/Checkout";
 function App() {
   return (
     <div className="App">
