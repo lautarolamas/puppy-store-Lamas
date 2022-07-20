@@ -22,28 +22,28 @@ export const getCategories = async () => {
 };
 
 export const getProducts = async (category = null) => {
-  let productsCollection;
+  let productosCollection;
 
   if (category) {
-    productsCollection = query(
-      collection(db, "products"),
+    productosCollection = query(
+      collection(db, "productos"),
       where("category", "==", category)
     );
   } else {
-    productsCollection = collection(db, "products");
+    productosCollection = collection(db, "productos");
   }
 
   try {
-    const res = await getDocs(productsCollection);
-    const products = res.docs.map((p) => ({ id: p.id, ...p.data() }));
-    return products;
+    const res = await getDocs(productosCollection);
+    const productos = res.docs.map((p) => ({ id: p.id, ...p.data() }));
+    return productos;
   } catch (error) {
     console.log("Ocurrió un error", error);
   }
 };
 
 export const getProduct = async (id) => {
-  const productRef = doc(db, "products", id);
+  const productRef = doc(db, "productos", id);
 
   try {
     const res = await getDoc(productRef);
@@ -68,8 +68,8 @@ export const setOrder = async (order) => {
   }
 };
 
-export const updateProductStock = async (id, orderQuantity) => {
-  const productRef = doc(db, "products", id);
+export const updateProductoStock = async (id, orderQuantity) => {
+  const productRef = doc(db, "productos", id);
   try {
     const { stock } = await getProduct(id);
     const newStock = stock - orderQuantity;

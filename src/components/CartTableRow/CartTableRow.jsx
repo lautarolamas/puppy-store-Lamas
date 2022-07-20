@@ -1,6 +1,4 @@
 import { Badge, Text, Box, Flex, Avatar, Td, Tr } from "@chakra-ui/react";
-import { CartContext } from "../context/CartContex";
-import { useContext } from "react";
 
 export default function CartTableRow({ item }) {
   const { picture, title, quantity, price } = item;
@@ -25,7 +23,7 @@ export default function CartTableRow({ item }) {
           </Td>
           <Td>
             <Text fontSize="sm">
-              {"PRECIO * CANTIDAD" + " : $" + price * quantity}
+              {"PRECIO TOTAL" + " : $" + price * quantity}
             </Text>
           </Td>
         </Box>

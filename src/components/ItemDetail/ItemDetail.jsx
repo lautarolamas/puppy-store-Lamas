@@ -2,6 +2,7 @@ import { useState, useContext } from "react";
 import { ItemCount } from "../ItemCount/ItemCount";
 import { Link } from "react-router-dom";
 import { CartContext } from "../context/CartContex";
+import { AlertModal } from "../Alerts/Alert";
 
 import {
   Box,
@@ -20,7 +21,7 @@ import {
 import { MdLocalShipping } from "react-icons/md";
 
 const ItemDetail = ({ item }) => {
-  const { title, price, picture, descripcion } = item;
+  const { title, price, picture, descripcion, stock } = item;
   const [addedToCart, setAddedToCart] = useState(false);
   const { addItem } = useContext(CartContext);
 
@@ -29,14 +30,13 @@ const ItemDetail = ({ item }) => {
       addItem({ ...item, quantity: count });
       setAddedToCart(true);
     } else {
-      alert("Error al agregar al carrito: La cantidad no puede ser 0");
+      <AlertModal
+        status={"error"}
+        titulo={"Tienes que agregar por lo menos un elemento al carrito"}
+        subtitulo={"saraza"}
+      />;
     }
   };
-  //esta funcion se va a usar para borrar del carrito :)
-  // const removeFromCart = () => {
-  //   removeItem(id);
-  //   setAddedToCart(false);
-  // };
   return (
     <Container maxW={"7xl"}>
       <SimpleGrid
@@ -90,28 +90,10 @@ const ItemDetail = ({ item }) => {
               >
                 {descripcion}
               </Text>
-              <ItemCount stock={10} initial={1} item={item} />
+              <ItemCount stock={stock} initial={1} item={item} />
             </VStack>
           </Stack>
-
-          {/* <Button
-            rounded={"none"}
-            w={"full"}
-            mt={8}
-            size={"lg"}
-            py={"7"}
-            bg={useColorModeValue("gray.900", "gray.50")}
-            color={useColorModeValue("white", "gray.900")}
-            textTransform={"uppercase"}
-            _hover={{
-              transform: "translateY(2px)",
-              boxShadow: "lg",
-            }}
-          >
-            Terminar compra{" "}
-          </Button> */}
-          <br></br>
-          {/* <Link to={"/cart"}>
+          <Link to={"/cart"}>
             <Button
               rounded={"none"}
               w={"full"}
@@ -128,11 +110,11 @@ const ItemDetail = ({ item }) => {
             >
               TERMINAR COMPRA
             </Button>
-          </Link> */}
+          </Link>
 
           <Stack direction="row" alignItems="center" justifyContent={"center"}>
             <MdLocalShipping />
-            <Text>2-3 En llegar a tu casa </Text>
+            <Text>COMPRA PROTEGIDA </Text>
           </Stack>
         </Stack>
       </SimpleGrid>

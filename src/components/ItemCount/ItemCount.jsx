@@ -5,6 +5,7 @@ import RemoveIcon from "@material-ui/icons/Remove";
 import Button from "@material-ui/core/Button";
 import Tooltip from "@material-ui/core/Tooltip";
 import { CartContext } from "../context/CartContex";
+import { AlertModal } from "../Alerts/Alert";
 
 export const ItemCount = ({ stock, initial, item }) => {
   const [count, setCount] = useState(initial);
@@ -14,13 +15,24 @@ export const ItemCount = ({ stock, initial, item }) => {
     if (count > 0) {
       setCount(count - 1);
     } else {
-      alert("El valor no puede ser menor a Cero ( 0 ) ");
+      <AlertModal
+        status={"error"}
+        titulo={"Tienes que agregar por lo menos un elemento al carrito"}
+        subtitulo={"saraza"}
+      />;
     }
   };
   const sumar = () => {
     if (count < stock) {
       setCount(count + 1);
     } else {
+      <AlertModal
+        status={"warning"}
+        titulo={
+          "La cantidad de productos a agregar, no puede superar el stock disponible "
+        }
+        subtitulo={"saraza"}
+      />;
       alert(
         "La cantidad de productos a agregar, no puede superar el stock disponible "
       );

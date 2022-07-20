@@ -9,6 +9,7 @@ import { WelcomeAndItems } from "./pages/WelcomeAndItems";
 import Cart from "./components/Cart/Cart";
 import { CategoriesProvider } from "./components/context/CategoriesContext";
 import { CartProvider } from "./components/context/CartContex";
+import { Checkout } from "./components/Checkout/Checkout";
 function App() {
   return (
     <div className="App">
@@ -24,7 +25,7 @@ function App() {
                   path="/category/:idCategory"
                   element={<ItemListContainer />}
                 />
-                {/* <Route path="/testFirebase" element={<testFirebase />} /> */}
+                <Route path="/checkout" element={<Checkout />} />
                 <Route path="/item/:idItem" element={<ItemDetailContainer />} />
               </Routes>
               <Footer />
