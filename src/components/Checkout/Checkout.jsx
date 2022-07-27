@@ -4,7 +4,6 @@ import {
   Box,
   Heading,
   Text,
-  IconButton,
   VStack,
   HStack,
   Wrap,
@@ -14,20 +13,16 @@ import {
   Input,
   InputGroup,
   InputLeftElement,
-  Textarea,
   Button,
-  ButtonGroup,
 } from "@chakra-ui/react";
-import {
-  MdPhone,
-  MdEmail,
-  MdLocationOn,
-  MdFacebook,
-  MdOutlineEmail,
-} from "react-icons/md";
-import { BsGithub, BsDiscord, BsPerson } from "react-icons/bs";
+import { MdPhone, MdOutlineEmail } from "react-icons/md";
+import { BsPerson } from "react-icons/bs";
+import CartTableRow from "../CartTableRow/CartTableRow";
+import { CartContext } from "../context/CartContex";
+import { useContext } from "react";
 
 export default function Checkout() {
+  const { cart, total } = useContext(CartContext);
   return (
     <Container bg="#ffff" maxW="full" mt={0} centerContent overflow="hidden">
       <Flex>
@@ -54,9 +49,16 @@ export default function Checkout() {
                     spacing={5}
                     px={5}
                     alignItems="flex-start"
-
-                    // ACA VAN A IR LOS PRODUCTOS
-                  ></HStack>
+                  >
+                    {/* {cart.map((item) => (
+                      <CartTableRow
+                        key={item.id}
+                        item={item}
+                        cart={cart}
+                        total={total}
+                      />
+                    ))} */}
+                  </HStack>
                 </Box>
               </WrapItem>
               <WrapItem>

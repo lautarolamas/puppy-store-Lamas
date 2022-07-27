@@ -9,8 +9,9 @@ import {
   where,
 } from "firebase/firestore";
 import { db } from "./initFirebase";
+
 export const getCategories = async () => {
-  const categoriesCollection = collection(db, "categories");
+  const categoriesCollection = collection(db, "categorias");
 
   try {
     const res = await getDocs(categoriesCollection);

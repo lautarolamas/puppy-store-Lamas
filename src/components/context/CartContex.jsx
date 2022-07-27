@@ -31,10 +31,6 @@ export const CartProvider = ({ children }) => {
     setCart(newCart);
   };
 
-  const clear = () => {
-    setCart([]);
-  };
-
   const isInCart = (id) => {
     return cart.some((_item) => _item.id === id);
   };
@@ -45,8 +41,7 @@ export const CartProvider = ({ children }) => {
   };
   const priceTotalCart = () => {
     return cart.reduce((acc, _item) => {
-      let multi = _item.quantity * _item.price;
-      return multi + acc;
+      return acc + _item.quantity * _item.price;
     }, 0);
   };
 
@@ -68,7 +63,6 @@ export const CartProvider = ({ children }) => {
         cart,
         addItem,
         removeItem,
-        clear,
         isInCart,
         total,
         priceTotalCart,

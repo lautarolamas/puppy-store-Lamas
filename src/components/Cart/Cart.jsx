@@ -4,18 +4,18 @@ import { CartEmpty } from "../CartEmpty/CartEmpty";
 
 import CartTable from "../CartTable/CartTable";
 export default function Cart() {
-  // let totalCarrito = Contexto.priceTotalCart();
-  const { cart, total, priceTotalCart, cartClear, removeItem } =
+  const { cart, total, priceTotalCart, cartClear, removeItem, quantityInCart } =
     useContext(CartContext);
   return (
     <div>
       {Boolean(cart.length) ? (
         <CartTable
           cart={cart}
-          total={total}
-          priceTotalCart={priceTotalCart}
+          total={total()}
+          priceTotalCart={priceTotalCart()}
           cartClear={cartClear}
           removeItem={removeItem}
+          quantityInCart={quantityInCart}
         />
       ) : (
         <CartEmpty />

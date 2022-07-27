@@ -31,7 +31,7 @@ Instalar las dependencias:
 npm install
 ```
 
-Luego es necesario crear un proyecto en Firebase y crear dos colecciones en Firestore (una con el nombre `products` donde se ingresarán los productos, y otra con el nombre `categories` para almacenar las categorías que corresponden a los productos creados y se mostrarán en la NavBar). Los items de ambas colecciones deben crearse manualmente desde Firebase.
+Luego es necesario crear un proyecto en Firebase y crear dos colecciones en Firestore (una con el nombre `products` donde se ingresarán los productos, y otra con el nombre `categorias` para almacenar las categorías que corresponden a los productos creados y se mostrarán en la NavBar). Los items de ambas colecciones deben crearse manualmente desde Firebase.
 
 ##### Ejemplo de product:
 
@@ -41,7 +41,6 @@ product = {
   description: "descripción"
   pictureUrl: "url de la imagen"
   price: 450
-  shortDescription: "Ejemplo de descripción corta"
   stock: 100
   title: "Nombre del producto"
 }
@@ -102,4 +101,4 @@ Luego de ingresar una order correctamente, el stock del producto se actualiza au
 
 ### Dark/Light Modes
 
-La aplicación se inicia por defecto en modo oscuro por preferencia personal, pero es posible alternar entre ambos modos desde el botón ubicado en el NavBar en la versión de escritorio, o en el Drawer en la versión mobile.
+La aplicación se inicia por defecto en modo claro pero es posible alternar entre ambos modos desde el botón ubicado en el NavBar en la versión de escritorio, o en el Drawer en la versión mobile.

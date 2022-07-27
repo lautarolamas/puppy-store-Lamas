@@ -5,13 +5,22 @@ export const ItemList = ({ items }) => {
   return (
     <div
       style={{
-        display: "grid",
-        gridTemplateColumns: "auto auto auto auto ",
+        display: "flex",
+        flexDirection: "row",
+        flexWrap: "wrap",
+        justifyContent: "space-evenly",
+        alignItems: "flex-start",
+        alignContent: "flex-start",
       }}
     >
       {items.map((item) => {
         return (
-          <div key={item.id}>
+          <div
+            style={{
+              margin: "30px",
+            }}
+            key={item.id}
+          >
             <Item item={item} />
           </div>
         );

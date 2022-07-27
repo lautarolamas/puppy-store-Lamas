@@ -1,6 +1,5 @@
-import React from "react";
 import CartTableRow from "../CartTableRow/CartTableRow";
-
+import React from "react";
 import {
   Table,
   Thead,
@@ -8,15 +7,17 @@ import {
   Tfoot,
   Tr,
   Th,
-  // Td,
-  TableCaption,
   TableContainer,
   Text,
   Button,
-  ButtonGroup,
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
-export default function CartTable({ cart, total }) {
+export default function CartTable({
+  cart,
+  priceTotalCart,
+  cartClear,
+  removeItem,
+}) {
   return (
     <TableContainer display={"block"}>
       <Table variant="simple">
@@ -32,9 +33,12 @@ export default function CartTable({ cart, total }) {
         </Tbody>
         <Tfoot>
           <Text fontWeight="bold">
-            Importe total del carrito : ${total}
-            {/* &nbsp;({totalInCart} producto/s) */}
+            Importe total del carrito : ${priceTotalCart}
           </Text>
+          <br></br>
+          <Button marginRight="10px" colorScheme="red" onClick={cartClear}>
+            Vaciar carrito
+          </Button>
           <Button as={Link} to="/checkout" colorScheme="blue">
             TERMINAR COMPRA
           </Button>

@@ -36,7 +36,11 @@ const SocialButton = ({ children, label, href }) => {
 
 export default function Footer() {
   return (
-    <div className="footerAbajo">
+    <div
+      style={{
+        marginTop: "auto",
+      }}
+    >
       <Box
         bg={useColorModeValue("gray.900", "gray.900")}
         color={useColorModeValue("white", "gray.200")}
