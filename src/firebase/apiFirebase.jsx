@@ -69,7 +69,7 @@ export const setOrder = async (order) => {
   }
 };
 
-export const updateProductoStock = async (id, orderQuantity) => {
+export const updateProductStock = async (id, orderQuantity) => {
   const productRef = doc(db, "productos", id);
   try {
     const { stock } = await getProduct(id);

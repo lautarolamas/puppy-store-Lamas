@@ -12,12 +12,8 @@ import {
   Button,
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
-export default function CartTable({
-  cart,
-  priceTotalCart,
-  cartClear,
-  removeItem,
-}) {
+import { CartContainer } from "../Cart/CartContainer";
+export default function CartTable({ cart, priceTotalCart, cartClear }) {
   return (
     <TableContainer display={"block"}>
       <Table variant="simple">
@@ -28,7 +24,7 @@ export default function CartTable({
         </Thead>
         <Tbody>
           {cart.map((item) => (
-            <CartTableRow key={item.id} item={item} />
+            <CartTableRow item={item} isCheckout={false} />
           ))}
         </Tbody>
         <Tfoot>

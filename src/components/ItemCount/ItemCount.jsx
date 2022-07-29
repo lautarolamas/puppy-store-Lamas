@@ -6,11 +6,19 @@ import Button from "@material-ui/core/Button";
 import Tooltip from "@material-ui/core/Tooltip";
 import { CartContext } from "../context/CartContex";
 import { AlertModal } from "../Alerts/Alert";
+import Swal from "sweetalert2";
 
 export const ItemCount = ({ stock, initial, item }) => {
   const [count, setCount] = useState(initial);
   const Contexto = useContext(CartContext);
 
+  const msjCorrecto = () => {
+    Swal.fire(
+      "CORRECTO",
+      "Se agrego el producto al carrito correctamente",
+      "success"
+    );
+  };
   const decrementar = () => {
     if (count > 0) {
       setCount(count - 1);

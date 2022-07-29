@@ -3,6 +3,7 @@ import { CartContext } from "../context/CartContex";
 import { CartEmpty } from "../CartEmpty/CartEmpty";
 
 import CartTable from "../CartTable/CartTable";
+import { CartContainer } from "./CartContainer";
 export default function Cart() {
   const { cart, total, priceTotalCart, cartClear, removeItem, quantityInCart } =
     useContext(CartContext);
