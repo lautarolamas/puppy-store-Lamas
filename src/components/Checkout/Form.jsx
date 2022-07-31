@@ -59,27 +59,28 @@ export const Form = (cart, priceTotalCart, saveOrder) => {
   };
 
   const validateForm = () => {
-    resetFormErrors();
+    console.log("datos del buyer " + buyer.name, buyer.phone, buyer.email);
+    // resetFormErrors();
     let validForm = true;
 
-    if (!buyer.name) {
-      setFormErrors((formErrors) => ({ ...formErrors, name: true }));
-      validForm = false;
-    }
-    if (
-      !buyer.phone ||
-      !/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/.test(buyer.phone)
-    ) {
-      setFormErrors((formErrors) => ({ ...formErrors, phone: true }));
-      validForm = false;
-    }
-    if (
-      !buyer.email ||
-      !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(buyer.email)
-    ) {
-      setFormErrors((formErrors) => ({ ...formErrors, email: true }));
-      validForm = false;
-    }
+    // if (!buyer.name) {
+    //   setFormErrors((formErrors) => ({ ...formErrors, name: true }));
+    //   validForm = false;
+    // }
+    // if (
+    //   !buyer.phone ||
+    //   !/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/.test(buyer.phone)
+    // ) {
+    //   setFormErrors((formErrors) => ({ ...formErrors, phone: true }));
+    //   validForm = false;
+    // }
+    // if (
+    //   !buyer.email ||
+    //   !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(buyer.email)
+    // ) {
+    //   setFormErrors((formErrors) => ({ ...formErrors, email: true }));
+    //   validForm = false;
+    // }
 
     return validForm;
   };
@@ -94,7 +95,7 @@ export const Form = (cart, priceTotalCart, saveOrder) => {
         <Box bg="white" borderRadius="lg">
           <Box m={8} color="#0B0E3F">
             <VStack spacing={5}>
-              <FormControl isRequired id="name">
+              <FormControl isRequired>
                 <FormLabel>Nombre y Apellido</FormLabel>
                 <InputGroup borderColor="#E0E1E7">
                   <InputLeftElement
@@ -113,7 +114,7 @@ export const Form = (cart, priceTotalCart, saveOrder) => {
                   />
                 </InputGroup>
               </FormControl>
-              <FormControl isRequired id="celular">
+              <FormControl isRequired>
                 <FormLabel>Telefono</FormLabel>
                 <InputGroup borderColor="#E0E1E7">
                   <InputLeftElement
@@ -133,7 +134,7 @@ export const Form = (cart, priceTotalCart, saveOrder) => {
                   />
                 </InputGroup>
               </FormControl>
-              <FormControl isRequired id="mail">
+              <FormControl isRequired>
                 <FormLabel>Mail</FormLabel>
                 <InputGroup borderColor="#E0E1E7">
                   <InputLeftElement
@@ -153,7 +154,7 @@ export const Form = (cart, priceTotalCart, saveOrder) => {
                   />
                 </InputGroup>
               </FormControl>
-              <FormControl id="name" float="right">
+              <FormControl float="right">
                 <Button
                   type="submit"
                   variant="solid"

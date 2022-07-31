@@ -102,3 +102,7 @@ Luego de ingresar una order correctamente, el stock del producto se actualiza au
 ### Dark/Light Modes
 
 La aplicación se inicia por defecto en modo claro pero es posible alternar entre ambos modos desde el botón ubicado en el NavBar en la versión de escritorio, o en el Drawer en la versión mobile.
+
+### Footer
+
+Se agregron estos links ( SOBRE NOSOTROS/CONTACTO) en el footer los cuales a futuro, van a contener su propia sección.
