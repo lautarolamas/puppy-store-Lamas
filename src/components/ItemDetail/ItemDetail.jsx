@@ -75,6 +75,8 @@ const ItemDetail = ({ item }) => {
               fontSize={"2xl"}
             >
               ${price}
+              <br></br>
+              STOCK DISPONIBLE: {stock}
             </Text>
           </Box>
 

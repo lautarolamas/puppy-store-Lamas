@@ -41,8 +41,10 @@ export const ItemCount = ({ stock, initial, item }) => {
         }
         subtitulo={"saraza"}
       />;
-      alert(
-        "La cantidad de productos a agregar, no puede superar el stock disponible "
+      Swal.fire(
+        "LO SENTIMOS",
+        "La cantidad de productos a agregar, no puede superar el stock disponible",
+        "warning"
       );
     }
   };
