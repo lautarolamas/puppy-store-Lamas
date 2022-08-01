@@ -60,12 +60,12 @@ La colección `orders` se creará automáticamente al generar la primer orden de
 Una vez disponible la aplicación en Firebase, habiendo cargado productos y categorías, renombrar el archivo `.env.example` ubicado en la raíz del proyecto a `.env` y completar las variables de configuración provistas por Firebase:
 
 ```
-REACT_APP_FIREBASE_API_KEY=
-REACT_APP_FIREBASE_AUTH_DOMAIN=
-REACT_APP_FIREBASE_PROJECT_ID=
-REACT_APP_FIREBASE_STORAGE_BUCKET=
-REACT_APP_FIREBASE_MESSAGING_SENDER_ID=
-REACT_APP_FIREBASE_APP_ID=
+REACT_APP_API_KEY=
+REACT_APP_AUTH_DOMAIN=
+REACT_APP_PROJECT_ID=
+REACT_APP_BUCKET=
+REACT_APP_MESSAGING_SENDER_ID=
+REACT_APP_APP_ID=
 ```
 
 Luego iniciar el servidor con:
@@ -92,16 +92,15 @@ Se utilizó LocalStorage para persistir el carrito de los usuarios en sus dispos
 
 ### Control de Stock
 
-Se implementó control de stock en dos puntos del flujo de compra para evitar que un usuario pueda adquirir una cantidad mayor de un producto de la que se encuentre disponible:
+Se implementó control de stock en el flujo de compra para evitar que un usuario pueda adquirir una cantidad mayor de un producto de la que se encuentre disponible:
 
 - Al enviar la orden a Firebase, comparando la cantidad de items a adquirir con la disponible en la base de datos.
-- Cuando el usuario ya tiene un producto en el carrito y vuelve a acceder al mismo para agregar más, la cantidad máxima que podrá agregar corresponde al stock original menos la cantidad ya existente el carrito.
 
 Luego de ingresar una order correctamente, el stock del producto se actualiza automáticamente en la base de datos.
 
 ### Dark/Light Modes
 
-La aplicación se inicia por defecto en modo claro pero es posible alternar entre ambos modos desde el botón ubicado en el NavBar en la versión de escritorio, o en el Drawer en la versión mobile.
+La aplicación se inicia por defecto en modo claro pero es posible alternar entre ambos modos desde el botón ubicado en el NavBar.
 
 ### Footer
 
