@@ -10,6 +10,7 @@ import Cart from "./components/Cart/Cart";
 import { CategoriesProvider } from "./components/context/CategoriesContext";
 import { CartProvider } from "./components/context/CartContex";
 import Checkout from "./components/Checkout/Checkout";
+import { CartContainer } from "./components/Cart/CartContainer";
 function App() {
   return (
     <div className="App">
@@ -20,7 +21,7 @@ function App() {
               <NavBar />
               <Routes>
                 <Route path="/" element={<WelcomeAndItems />} />
-                <Route path="/cart" element={<Cart />} />
+                <Route path="/cart" element={<CartContainer />} />
                 <Route
                   path="/category/:idCategory"
                   element={<ItemListContainer />}

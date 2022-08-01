@@ -11,13 +11,14 @@ import {
   InputGroup,
   InputLeftElement,
   Button,
+  useFormControlStyles,
 } from "@chakra-ui/react";
 import { MdPhone, MdOutlineEmail } from "react-icons/md";
 import { BsPerson } from "react-icons/bs";
 import { serverTimestamp } from "firebase/firestore";
 import { useState } from "react";
 
-export const Form = (cart, priceTotalCart, saveOrder) => {
+export const Form = ({ cart, priceTotalCart, saveOrder }) => {
   const [formErrors, setFormErrors] = useState({
     name: false,
     phone: false,
@@ -43,6 +44,7 @@ export const Form = (cart, priceTotalCart, saveOrder) => {
   };
 
   const handleSubmit = (e) => {
+    console.log("handke submit");
     e.preventDefault();
 
     if (validateForm()) {
@@ -60,27 +62,27 @@ export const Form = (cart, priceTotalCart, saveOrder) => {
 
   const validateForm = () => {
     console.log("datos del buyer " + buyer.name, buyer.phone, buyer.email);
-    // resetFormErrors();
+    resetFormErrors();
     let validForm = true;
 
-    // if (!buyer.name) {
-    //   setFormErrors((formErrors) => ({ ...formErrors, name: true }));
-    //   validForm = false;
-    // }
-    // if (
-    //   !buyer.phone ||
-    //   !/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/.test(buyer.phone)
-    // ) {
-    //   setFormErrors((formErrors) => ({ ...formErrors, phone: true }));
-    //   validForm = false;
-    // }
-    // if (
-    //   !buyer.email ||
-    //   !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(buyer.email)
-    // ) {
-    //   setFormErrors((formErrors) => ({ ...formErrors, email: true }));
-    //   validForm = false;
-    // }
+    if (!buyer.name) {
+      setFormErrors((formErrors) => ({ ...formErrors, name: true }));
+      validForm = false;
+    }
+    if (
+      !buyer.phone ||
+      !/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/.test(buyer.phone)
+    ) {
+      setFormErrors((formErrors) => ({ ...formErrors, phone: true }));
+      validForm = false;
+    }
+    if (
+      !buyer.email ||
+      !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(buyer.email)
+    ) {
+      setFormErrors((formErrors) => ({ ...formErrors, email: true }));
+      validForm = false;
+    }
 
     return validForm;
   };
@@ -123,7 +125,7 @@ export const Form = (cart, priceTotalCart, saveOrder) => {
                   />
                   <Input
                     name="phone"
-                    type="number"
+                    type="cel"
                     size="md"
                     error={formErrors.phone}
                     helperText={

@@ -28,7 +28,7 @@ export default function Checkout() {
 
   const [orderId, setOrderId] = useState("");
   const [error, setError] = useState("");
-  // const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (!cart.length) {
@@ -38,19 +38,18 @@ export default function Checkout() {
 
   const saveOrder = (order) => {
     setError("");
-    console.log("SAVE ORDER");
-    // setIsLoading(true);
+
+    setIsLoading(true);
 
     checkStock(order.cart).then(async (stockResponse) => {
       if (stockResponse.some((resp) => resp === false)) {
-        setError("No tenemos stock suficiente para procesar tu orden.");
-        console.log("CHECKSTOCK");
-        // setIsLoading(false);
+        setError("No tenemos stock para procesar tu orden.");
+
+        setIsLoading(false);
       } else {
         const orderId = await setOrder(order);
         updateStock(order.cart);
         setOrderId(orderId);
-        console.log("CHECKSTOCK ELSE ");
       }
     });
   };
@@ -89,9 +88,6 @@ export default function Checkout() {
               <WrapItem>
                 <Box>
                   <Heading>Resumen de la compra</Heading>
-                  <Text mt={{ sm: 3, md: 3, lg: 5 }} color="gray.500">
-                    A continuación se encuentran los productos que vas a comprar
-                  </Text>
 
                   <HStack
                     mt={{ lg: 10, md: 10 }}
@@ -114,7 +110,11 @@ export default function Checkout() {
                   </HStack>
                 </Box>
               </WrapItem>
-              <Form cart={cart} saveOrder={saveOrder} />
+              <Form
+                cart={cart}
+                priceTotalCart={priceTotalCart()}
+                saveOrder={saveOrder}
+              />
             </Wrap>
           </Box>
         </Box>
