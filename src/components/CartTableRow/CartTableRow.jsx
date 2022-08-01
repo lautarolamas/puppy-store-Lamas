@@ -12,7 +12,6 @@ import {
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import { CartContext } from "../context/CartContex";
 import { useContext } from "react";
-import { CartContainer } from "../Cart/CartContainer";
 export default function CartTableRow({ item, isCheckout }) {
   const { picture, title, quantity, price, id } = item;
   const { removeItem } = useContext(CartContext);
@@ -46,7 +45,7 @@ export default function CartTableRow({ item, isCheckout }) {
             <Td>
               <Text fontSize="sm">
                 <Button onClick={() => removeItem(id)}>
-                  <Icon as={DeleteForeverIcon} />
+                  <Icon color="red" as={DeleteForeverIcon} />
                 </Button>
               </Text>
             </Td>

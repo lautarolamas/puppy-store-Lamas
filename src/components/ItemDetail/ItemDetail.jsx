@@ -37,6 +37,11 @@ const ItemDetail = ({ item }) => {
       />;
     }
   };
+
+  // const removeFromCart = () => {
+  //   removeItem(id);
+  //   setAddedToCart(false);
+  // }
   return (
     <Container maxW={"7xl"}>
       <SimpleGrid

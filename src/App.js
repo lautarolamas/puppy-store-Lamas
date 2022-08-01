@@ -6,7 +6,6 @@ import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailCont
 import { ChakraProvider } from "@chakra-ui/react";
 import Footer from "./components/Footer/Footer";
 import { WelcomeAndItems } from "./pages/WelcomeAndItems";
-import Cart from "./components/Cart/Cart";
 import { CategoriesProvider } from "./components/context/CategoriesContext";
 import { CartProvider } from "./components/context/CartContex";
 import Checkout from "./components/Checkout/Checkout";

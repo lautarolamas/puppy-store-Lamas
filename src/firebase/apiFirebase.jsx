@@ -9,6 +9,7 @@ import {
   where,
 } from "firebase/firestore";
 import { db } from "./initFirebase";
+import Swal from "sweetalert2";
 
 export const getCategories = async () => {
   const categoriesCollection = collection(db, "categorias");
@@ -18,7 +19,7 @@ export const getCategories = async () => {
     const categories = res.docs.map((c) => ({ id: c.id, ...c.data() }));
     return categories;
   } catch (error) {
-    console.log("Ocurrió un error", error);
+    Swal.fire("Uuups", "Ha ocurrido un error", "error");
   }
 };
 
@@ -39,7 +40,7 @@ export const getProducts = async (category = null) => {
     const productos = res.docs.map((p) => ({ id: p.id, ...p.data() }));
     return productos;
   } catch (error) {
-    console.log("Ocurrió un error", error);
+    Swal.fire("Uuups", "Ha ocurrido un error", "error");
   }
 };
 
@@ -55,7 +56,7 @@ export const getProduct = async (id) => {
       return null;
     }
   } catch (error) {
-    console.log("Ocurrió un error", error);
+    Swal.fire("Uuups", "Ha ocurrido un error", "error");
   }
 };
 
@@ -65,7 +66,7 @@ export const setOrder = async (order) => {
     const { id } = await addDoc(ordersCollection, order);
     return id;
   } catch (error) {
-    console.log("Ocurrió un error", error);
+    Swal.fire("Uuups", "Ha ocurrido un error", "error");
   }
 };
 
@@ -76,6 +77,6 @@ export const updateProductStock = async (id, orderQuantity) => {
     const newStock = stock - orderQuantity;
     updateDoc(productRef, { stock: newStock });
   } catch (error) {
-    console.log("Ocurrió un error", error);
+    Swal.fire("Uuups", "Ha ocurrido un error", "error");
   }
 };

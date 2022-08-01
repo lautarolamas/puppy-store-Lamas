@@ -1,5 +1,4 @@
 import React from "react";
-import Swal from "sweetalert2";
 
 import {
   Box,
@@ -11,12 +10,12 @@ import {
   InputGroup,
   InputLeftElement,
   Button,
-  useFormControlStyles,
 } from "@chakra-ui/react";
 import { MdPhone, MdOutlineEmail } from "react-icons/md";
 import { BsPerson } from "react-icons/bs";
 import { serverTimestamp } from "firebase/firestore";
 import { useState } from "react";
+import Swal from "sweetalert2";
 
 export const Form = ({ cart, priceTotalCart, saveOrder }) => {
   const [formErrors, setFormErrors] = useState({
@@ -44,7 +43,6 @@ export const Form = ({ cart, priceTotalCart, saveOrder }) => {
   };
 
   const handleSubmit = (e) => {
-    console.log("handke submit");
     e.preventDefault();
 
     if (validateForm()) {
@@ -61,26 +59,28 @@ export const Form = ({ cart, priceTotalCart, saveOrder }) => {
   };
 
   const validateForm = () => {
-    console.log("datos del buyer " + buyer.name, buyer.phone, buyer.email);
     resetFormErrors();
     let validForm = true;
 
     if (!buyer.name) {
-      setFormErrors((formErrors) => ({ ...formErrors, name: true }));
+      Swal.fire("Uuups", "Por favor revisa el formato del nombre", "warning");
+      // setFormErrors((formErrors) => ({ ...formErrors, name: true }));
       validForm = false;
     }
     if (
       !buyer.phone ||
       !/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/.test(buyer.phone)
     ) {
-      setFormErrors((formErrors) => ({ ...formErrors, phone: true }));
+      Swal.fire("Uuups", "Por favor revisa el formato del teléfono", "warning");
+      // setFormErrors((formErrors) => ({ ...formErrors, phone: true }));
       validForm = false;
     }
     if (
       !buyer.email ||
       !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(buyer.email)
     ) {
-      setFormErrors((formErrors) => ({ ...formErrors, email: true }));
+      Swal.fire("Uuups", "Por favor revisa el formato del email", "warning");
+      // setFormErrors((formErrors) => ({ ...formErrors, email: true }));
       validForm = false;
     }
 
@@ -88,7 +88,6 @@ export const Form = ({ cart, priceTotalCart, saveOrder }) => {
   };
 
   const resetFormErrors = () => {
-    console.log("reset form errors");
     setFormErrors({ name: false, phone: false, email: false });
   };
   return (

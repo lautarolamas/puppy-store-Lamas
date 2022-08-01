@@ -10,11 +10,14 @@ import {
   Table,
   Tr,
 } from "@chakra-ui/react";
+import SuccesChekout from "../SweetAlerts/SweetAlerts";
+import { AlertModal } from "../Alerts/Alert";
 
 import CartTableRow from "../CartTableRow/CartTableRow";
 import { CartContext } from "../context/CartContex";
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 import { Form } from "./Form";
 import {
   getProduct,
@@ -23,33 +26,37 @@ import {
 } from "../../firebase/apiFirebase";
 
 export default function Checkout() {
-  const { cart, priceTotalCart } = useContext(CartContext);
+  const { cart, priceTotalCart, cartClear } = useContext(CartContext);
   const navigate = useNavigate();
 
   const [orderId, setOrderId] = useState("");
-  const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
-    if (!cart.length) {
-      navigate("/");
-    }
-  }, []);
-
   const saveOrder = (order) => {
-    setError("");
-
     setIsLoading(true);
 
     checkStock(order.cart).then(async (stockResponse) => {
       if (stockResponse.some((resp) => resp === false)) {
-        setError("No tenemos stock para procesar tu orden.");
+        Swal.fire(
+          "ERROR",
+          "No tenemos stock para procesar tu orden, por favor elige otro producto",
+          "error"
+        );
 
         setIsLoading(false);
       } else {
         const orderId = await setOrder(order);
         updateStock(order.cart);
+        //SI EL OrderId no viene vacio.
         setOrderId(orderId);
+        Swal.fire(
+          "FELITACIONES",
+          `Finalizaste tu compra, el id de la misma es : ${orderId}`,
+          "success"
+        );
+        cartClear();
+
+        navigate("/");
       }
     });
   };
@@ -110,10 +117,12 @@ export default function Checkout() {
                   </HStack>
                 </Box>
               </WrapItem>
+
               <Form
                 cart={cart}
                 priceTotalCart={priceTotalCart()}
                 saveOrder={saveOrder}
+                isLoading={isLoading}
               />
             </Wrap>
           </Box>
