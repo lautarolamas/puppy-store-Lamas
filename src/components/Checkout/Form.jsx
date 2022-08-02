@@ -64,7 +64,7 @@ export const Form = ({ cart, priceTotalCart, saveOrder }) => {
 
     if (!buyer.name) {
       Swal.fire("Uuups", "Por favor revisa el formato del nombre", "warning");
-      // setFormErrors((formErrors) => ({ ...formErrors, name: true }));
+
       validForm = false;
     }
     if (
@@ -72,7 +72,7 @@ export const Form = ({ cart, priceTotalCart, saveOrder }) => {
       !/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/.test(buyer.phone)
     ) {
       Swal.fire("Uuups", "Por favor revisa el formato del teléfono", "warning");
-      // setFormErrors((formErrors) => ({ ...formErrors, phone: true }));
+
       validForm = false;
     }
     if (
@@ -80,7 +80,7 @@ export const Form = ({ cart, priceTotalCart, saveOrder }) => {
       !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(buyer.email)
     ) {
       Swal.fire("Uuups", "Por favor revisa el formato del email", "warning");
-      // setFormErrors((formErrors) => ({ ...formErrors, email: true }));
+
       validForm = false;
     }
 
@@ -91,7 +91,12 @@ export const Form = ({ cart, priceTotalCart, saveOrder }) => {
     setFormErrors({ name: false, phone: false, email: false });
   };
   return (
-    <form onSubmit={handleSubmit}>
+    <form
+      style={{
+        marginLeft: "58px",
+      }}
+      onSubmit={handleSubmit}
+    >
       <WrapItem>
         <Box bg="white" borderRadius="lg">
           <Box m={8} color="#0B0E3F">

@@ -10,8 +10,6 @@ import {
   Table,
   Tr,
 } from "@chakra-ui/react";
-import SuccesChekout from "../SweetAlerts/SweetAlerts";
-import { AlertModal } from "../Alerts/Alert";
 
 import CartTableRow from "../CartTableRow/CartTableRow";
 import { CartContext } from "../context/CartContex";

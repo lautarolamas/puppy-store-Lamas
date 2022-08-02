@@ -16,6 +16,10 @@ Tanto el listado de categorías, como los productos y las órdenes generadas se 
 - [Firebase](https://firebase.google.com/)
 - [Vercel](https://vercel.com/) (para deploy)
 
+## Proyecto deployado
+
+https://puppy-store-lamas.vercel.app/
+
 ## Ejecutar el proyecto
 
 Para ejecutar el proyecto, el mismo puede descargarse como .zip o clonarlo con:
@@ -38,8 +42,8 @@ Luego es necesario crear un proyecto en Firebase y crear dos colecciones en Fire
 ```
 product = {
   category: "comidas"
-  description: "descripción"
-  pictureUrl: "url de la imagen"
+  descripcion: "descripción"
+  picture: "url de la imagen"
   price: 450
   stock: 100
   title: "Nombre del producto"

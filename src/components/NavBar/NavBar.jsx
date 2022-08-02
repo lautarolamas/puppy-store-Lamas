@@ -371,7 +371,6 @@ const MobileNavItem = ({ label, children, href }) => {
                   >
                     <Flex
                       py={2}
-                      // as={Router.Link}
                       href={child.href ?? "#"}
                       justify={"space-between"}
                       align={"center"}
@@ -438,7 +437,7 @@ const NAV_ITEMS = [
     href: "/category/accesorios",
     children: [
       {
-        label: "Todos",
+        label: "Compartidos",
         href: "/category/accesorios",
         children: [
           {
