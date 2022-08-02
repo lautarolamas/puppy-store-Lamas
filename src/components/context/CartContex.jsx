@@ -32,7 +32,7 @@ export const CartProvider = ({ children }) => {
     setCartInLocalStorage(newCart);
     Swal.fire(
       "LISTO",
-      "Se agrego correctamenta tu producto al carrito",
+      "Se agrego correctamente tu producto al carrito",
       "success"
     );
   };

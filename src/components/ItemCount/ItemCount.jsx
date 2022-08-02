@@ -12,35 +12,21 @@ export const ItemCount = ({ stock, initial, item }) => {
   const [count, setCount] = useState(initial);
   const Contexto = useContext(CartContext);
 
-  const msjCorrecto = () => {
-    Swal.fire(
-      "CORRECTO",
-      "Se agrego el producto al carrito correctamente",
-      "success"
-    );
-  };
   const decrementar = () => {
     if (count > 0) {
       setCount(count - 1);
     } else {
-      <AlertModal
-        status={"error"}
-        titulo={"Tienes que agregar por lo menos un elemento al carrito"}
-        subtitulo={"saraza"}
-      />;
+      Swal.fire(
+        "LO SENTIMOS",
+        "La cantidad de productos a agregar, no puede ser menor a 1",
+        "warning"
+      );
     }
   };
   const sumar = () => {
     if (count < stock) {
       setCount(count + 1);
     } else {
-      <AlertModal
-        status={"warning"}
-        titulo={
-          "La cantidad de productos a agregar, no puede superar el stock disponible "
-        }
-        subtitulo={"saraza"}
-      />;
       Swal.fire(
         "LO SENTIMOS",
         "La cantidad de productos a agregar, no puede superar el stock disponible",
