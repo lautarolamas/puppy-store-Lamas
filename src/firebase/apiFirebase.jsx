@@ -25,7 +25,6 @@ export const getCategories = async () => {
 
 export const getProducts = async (category = null) => {
   let productosCollection;
-
   if (category) {
     productosCollection = query(
       collection(db, "productos"),
@@ -34,10 +33,11 @@ export const getProducts = async (category = null) => {
   } else {
     productosCollection = collection(db, "productos");
   }
-
   try {
     const res = await getDocs(productosCollection);
+
     const productos = res.docs.map((p) => ({ id: p.id, ...p.data() }));
+
     return productos;
   } catch (error) {
     Swal.fire("Uuups", "Ha ocurrido un error", "error");

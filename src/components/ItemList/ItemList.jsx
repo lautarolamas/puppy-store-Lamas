@@ -13,7 +13,7 @@ export const ItemList = ({ items }) => {
         alignContent: "flex-start",
       }}
     >
-      {items.map((item) => {
+      {items?.map((item) => {
         return (
           <div
             style={{
