@@ -13,7 +13,7 @@ import {
 
 import CartTableRow from "../CartTableRow/CartTableRow";
 import { CartContext } from "../context/CartContex";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { Form } from "./Form";

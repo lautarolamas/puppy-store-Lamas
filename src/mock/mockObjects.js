@@ -1,3 +1,6 @@
+// No se usa mas, se consumem desde firebase
+
+
 export const products = [
   {
     id: 1,

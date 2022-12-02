@@ -4,7 +4,6 @@ import {
   Flex,
   Box,
   Heading,
-  Text,
   HStack,
   Wrap,
   WrapItem,

@@ -10,7 +10,7 @@ export default function CartWidget() {
   return (
     <Button as={Link} to="/cart">
       <Icon as={ShoppingCartIcon} />
-      {Contexto.total() == 0 ? <></> : <Text ml={2}>{Contexto.total()}</Text>}
+      {Contexto.total() === 0 ? <></> : <Text ml={2}>{Contexto.total()}</Text>}
     </Button>
   );
 }

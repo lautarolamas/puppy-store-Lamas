@@ -12,7 +12,6 @@ import {
   Button,
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
-import { CartContainer } from "../Cart/CartContainer";
 export default function CartTable({ cart, priceTotalCart, cartClear }) {
   return (
     <TableContainer display={"block"}>

@@ -22,7 +22,7 @@ import {
   PopoverTrigger,
   PopoverContent,
   useBreakpointValue,
-  Image,
+  
 } from "@chakra-ui/react";
 import {
   MoonIcon,
